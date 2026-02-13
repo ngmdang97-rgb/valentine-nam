@@ -862,7 +862,12 @@ hintEl.textContent = s.hint || "";
 // Cover: center layout + move button just under title
 const panelEl = document.querySelector(".panel");
 const catEl = document.getElementById("coverCat");
-
+// Footer (dots + —Dang): show only when slide.showFooter === true
+if (s.showFooter === true) {
+  panelEl.classList.add("show-footer");
+} else {
+  panelEl.classList.remove("show-footer");
+}
 if (s.type === "cover") {
   panelEl.classList.add("cover-mode");
   catEl.style.display = "block";
@@ -876,8 +881,7 @@ if (s.type === "cover") {
 const fromLineEl = document.getElementById("fromLine");
 // Dots + —Dang only when slide.showFooter === true
 if (s.showFooter === true) {
-  dotsEl.style.display = "flex";
-  fromLineEl.style.display = "block";
+  
 } else {
   dotsEl.style.display = "none";
   fromLineEl.style.display = "none";
