@@ -47,16 +47,16 @@
       100%{ transform:translateY(-120vh) translateX(var(--drift)) scale(1.25); opacity:0}
     }
 
-    /* Main panel (≈ 20% bigger + content ≈ 20% bigger) */
+    /* Main panel (global bigger) */
     .panel{
-      width:min(1176px, 96vw);                 /* was ~980px */
-      min-height:min(816px, 86vh);             /* was ~680px */
-      border-radius: 41px;                     /* was 34px */
+      width:min(1176px, 96vw);
+      min-height:min(816px, 86vh);
+      border-radius: 41px;
       background: var(--card);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
-      padding: clamp(22px, 5vw, 53px);         /* was 18..44 */
+      padding: clamp(22px, 5vw, 53px);
       text-align:center;
       position:relative;
       z-index:2;
@@ -64,11 +64,11 @@
       display:flex;
       flex-direction:column;
       justify-content:flex-start;
-      gap:14px;                                /* was 12px */
+      gap:14px;
     }
     .panel::before{
       content:"";
-      position:absolute; inset:-84px;          /* was -70px */
+      position:absolute; inset:-84px;
       background:
         radial-gradient(624px 384px at 30% 20%, rgba(255,105,180,.20), transparent 70%),
         radial-gradient(624px 384px at 70% 80%, rgba(255,155,195,.20), transparent 70%);
@@ -76,29 +76,16 @@
       z-index:-1;
     }
 
-    /* Cover mode (keep panel, just center) */
-    .cover-mode{
-      justify-content: center !important;
-    }
-    .cover-mode .actions{
-      margin-top: 10px !important;
-      padding-top: 0 !important;
-    }
-    .cover-mode .story{
-      margin-top: 0 !important;
-      min-height: 0 !important;
-    }
-    .cover-mode .dots,
-    .cover-mode .from{
-      display:none !important;
-    }
-    .cover-mode .hint{
-      margin-top: 8px !important;
-    }
+    /* Cover mode (center) */
+    .cover-mode{ justify-content: center !important; }
+    .cover-mode .actions{ margin-top: 10px !important; padding-top: 0 !important; }
+    .cover-mode .story{ margin-top: 0 !important; min-height: 0 !important; }
+    .cover-mode .dots, .cover-mode .from{ display:none !important; }
+    .cover-mode .hint{ margin-top: 8px !important; }
 
     /* Cover cat */
     .cover-cat{
-      width: 144px;                            /* 120px * 1.2 */
+      width: 144px;
       margin: 0 auto 8px;
       display: none;
       animation: catBob 2.2s ease-in-out infinite;
@@ -114,40 +101,61 @@
     h1{
       margin:0;
       color:var(--hot);
-      font-size: clamp(31px, 4.8vw, 65px);     /* was 26..54 */
+      font-size: clamp(31px, 4.8vw, 65px);
       letter-spacing:-.7px;
       line-height:1.05;
       text-shadow: 0 10px 30px rgba(255,46,122,.15);
     }
-
     .subline{
       color: var(--muted);
-      font-size: 17px;                         /* was 14px */
+      font-size: 17px;
       margin-top: -7px;
     }
-
     .story{
       margin: 8px auto 0;
-      max-width: 984px;                        /* was 820px */
-      font-size: clamp(18px, 2vw, 24px);       /* was 15..20 */
+      max-width: 984px;
+      font-size: clamp(18px, 2vw, 24px);
       line-height:1.55;
       padding: 0 10px;
       white-space: pre-line;
     }
 
-    /* Footer (dots + —Dang) hidden by default */
+    /* ✅ FOOTER CONTROL (FIXED)
+       Hidden by default, shown ONLY when panel has .show-footer
+       IMPORTANT: No other CSS should set display:flex for .dots */
     .dots, .from{ display:none; }
-    .show-footer .dots{ display:flex; }
-    .show-footer .from{ display:block; }
+    .panel.show-footer .dots{ display:flex; }
+    .panel.show-footer .from{ display:block; }
 
-    .dots{display:flex; gap:10px; justify-content:center; margin-top:8px;}
-    .dot{width:12px; height:12px; border-radius:999px; background: rgba(255,46,122,.22);}
-    .dot.active{ background: rgba(255,46,122,.95); transform: scale(1.15); }
+    .dots{
+      gap:10px;
+      justify-content:center;
+      margin-top:8px;
+    }
+    .dot{
+      width:12px; height:12px;
+      border-radius:999px;
+      background: rgba(255,46,122,.22);
+    }
+    .dot.active{
+      background: rgba(255,46,122,.95);
+      transform: scale(1.15);
+    }
+    .from{
+      margin-top: 3px;
+      font-weight: 900;
+      font-size: 18px;
+      color:#b4003d;
+    }
 
-    .from{ margin-top: 3px; font-weight: 900; font-size: 18px; color:#b4003d; }
-    .hint{ margin-top: 8px; font-size: 16px; opacity:.75; min-height: 20px; }
+    .hint{
+      margin-top: 8px;
+      font-size: 16px;
+      opacity:.75;
+      min-height: 20px;
+    }
 
-    /* Buttons (≈ +20%) */
+    /* Buttons */
     .actions{
       margin-top: auto;
       padding-top: 10px;
@@ -159,10 +167,10 @@
     button{
       border:none;
       cursor:pointer;
-      padding: 17px 31px;                      /* was 14x26 */
-      border-radius: 19px;                     /* was 16 */
+      padding: 17px 31px;
+      border-radius: 19px;
       font-weight: 900;
-      font-size: 22px;                         /* was 18 */
+      font-size: 22px;
       box-shadow: 0 12px 26px rgba(0,0,0,.12);
       transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
       user-select:none;
@@ -177,7 +185,7 @@
     /* Burst hearts */
     .burst{ position:fixed; inset:0; pointer-events:none; z-index:5; }
     .pop{
-      position:absolute; font-size: 26px;      /* was 22 */
+      position:absolute; font-size: 26px;
       animation: pop 850ms ease-out forwards;
       filter: drop-shadow(0 10px 16px rgba(0,0,0,.12));
     }
@@ -187,33 +195,33 @@
       100%{ transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.15); opacity: 0 }
     }
 
-    /* ===== LinkedIn message card (BIGGER) ===== */
+    /* ===== LinkedIn message card (BIGGER +20% from your latest) ===== */
     .linkedin-wrap{
-      width: min(920px, 98%);
-      margin: 14px auto 0;
+      width: min(1104px, 98%);     /* 920 * 1.2 */
+      margin: 16px auto 0;
       text-align: left;
-      background: rgba(255,255,255,.90);
+      background: rgba(255,255,255,.92);
       border: 1px solid rgba(0,0,0,.08);
-      border-radius: 26px;
-      box-shadow: 0 18px 44px rgba(0,0,0,.12);
+      border-radius: 31px;         /* 26 * 1.2 */
+      box-shadow: 0 20px 52px rgba(0,0,0,.12);
       overflow: hidden;
-      padding: 24px 22px 20px;
+      padding: 29px 26px 24px;     /* +20% */
     }
     .linkedin-date{
       text-align:center;
-      font-size: 14px;                         /* was 12 */
+      font-size: 17px;             /* 14 * 1.2 */
       opacity: .55;
-      margin: 0 0 18px;
-      letter-spacing: .6px;
+      margin: 0 0 20px;
+      letter-spacing: .7px;
     }
     .linkedin-row{
       display:flex;
-      gap:16px;
+      gap:19px;                    /* 16 * 1.2 */
       align-items:flex-start;
     }
     .linkedin-avatar{
-      width: 58px;
-      height: 58px;
+      width: 70px;                 /* 58 * 1.2 */
+      height: 70px;
       border-radius: 999px;
       object-fit: cover;
       border: 2px solid rgba(255,46,122,.18);
@@ -221,42 +229,42 @@
     }
     .linkedin-sender{
       font-weight: 900;
-      font-size: 22px;                         /* was 17 */
+      font-size: 26px;             /* 22 * 1.2 */
       margin-top: 2px;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       display:flex;
       align-items:center;
-      gap:6px;
+      gap:7px;
     }
     .linkedin-subtitle{
-      font-size: 16px;                         /* was 13 */
+      font-size: 19px;             /* 16 * 1.2 */
       color: #6b7280;
       margin-top: 0px;
-      margin-bottom: 14px;
+      margin-bottom: 17px;         /* 14 * 1.2 */
       line-height: 1.35;
     }
     .linkedin-bubble{
       background: white;
       border: 1px solid rgba(0,0,0,.08);
-      border-radius: 18px;
-      padding: 16px 18px;
-      max-width: 760px;
-      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+      border-radius: 22px;         /* 18 * 1.2 */
+      padding: 19px 22px;          /* 16/18 * 1.2 */
+      max-width: 912px;            /* 760 * 1.2 */
+      box-shadow: 0 14px 32px rgba(0,0,0,.10);
       white-space: pre-line;
-      font-size: 19px;                         /* was 16 */
+      font-size: 23px;             /* 19 * 1.2 */
       line-height: 1.5;
     }
     .linkedin-time{
-      font-size: 14px;                         /* was 12 */
+      font-size: 17px;             /* 14 * 1.2 */
       opacity: .55;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
-    /* ===== Tinder Match card (≈ +20%) ===== */
+    /* ===== Tinder Match card ===== */
     .match-wrap{
-      width: min(1032px, 98%);                 /* was 860 */
+      width: min(1032px, 98%);
       margin: 12px auto 0;
-      border-radius: 31px;                     /* was 26 */
+      border-radius: 31px;
       background: rgba(0,0,0,.28);
       border: 1px solid rgba(255,255,255,.18);
       overflow:hidden;
@@ -271,19 +279,19 @@
     }
     .match-inner{
       position:relative;
-      padding: 31px 22px 26px;                 /* was 26 18 22 */
+      padding: 31px 22px 26px;
       text-align:center;
       color:white;
     }
     .match-title{
-      font-size: 53px;                         /* was 44 */
+      font-size: 53px;
       font-weight: 900;
       letter-spacing: -.6px;
       text-shadow: 0 18px 38px rgba(0,0,0,.35);
       margin: 0 0 8px;
     }
     .match-sub{
-      font-size: 22px;                         /* was 18 */
+      font-size: 22px;
       opacity: .92;
       margin: 0 0 20px;
     }
@@ -295,7 +303,7 @@
       margin: 14px 0 20px;
     }
     .match-avatars img{
-      width: 132px; height:132px;              /* was 110 */
+      width: 132px; height:132px;
       border-radius: 999px;
       object-fit: cover;
       border: 4px solid rgba(255,255,255,.70);
@@ -303,18 +311,18 @@
       background: rgba(255,255,255,.2);
     }
     .match-pin{
-      width: 65px; height:65px;                /* was 54 */
-      border-radius: 22px;                     /* was 18 */
+      width: 65px; height:65px;
+      border-radius: 22px;
       display:grid; place-items:center;
       background: linear-gradient(135deg, #ff2e7a, #ff7aa8);
       box-shadow: 0 12px 26px rgba(0,0,0,.22);
-      font-size: 31px;                         /* was 26 */
+      font-size: 31px;
     }
     .match-btn{
-      width: min(624px, 94%);                  /* was 520 */
+      width: min(624px, 94%);
       margin: 12px auto 0;
-      padding: 19px 22px;                      /* was 16 18 */
-      border-radius: 22px;                     /* was 18 */
+      padding: 19px 22px;
+      border-radius: 22px;
       border: none;
       font-weight: 900;
       letter-spacing: .6px;
@@ -326,95 +334,26 @@
     }
     .match-note{
       margin-top: 12px;
-      font-size: 16px;                         /* was 13 */
+      font-size: 16px;
       opacity: .8;
     }
 
-    /* ===== QA card (≈ +20%) ===== */
-    .qa-wrap{
-      width: min(984px, 98%);                  /* was 820 */
-      margin: 12px auto 0;
-      text-align:left;
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(0,0,0,.08);
-      border-radius: 26px;
-      box-shadow: 0 14px 34px rgba(0,0,0,.10);
-      padding: 22px 20px 20px;
-    }
-    .qa-q{
-      font-weight: 900;
-      margin: 0 0 12px;
-      color:#b4003d;
-      font-size: 20px;
-    }
-    .qa-grid{
-      display:grid;
-      gap:14px;
-      grid-template-columns: 1fr 1fr;
-    }
-    .qa-field{ display:flex; flex-direction:column; gap:8px; }
-    .qa-field label{ font-size: 16px; color: var(--muted); font-weight: 700; }
-    .qa-field input, .qa-field textarea{
-      width:100%;
-      border-radius: 17px;
-      border: 1px solid rgba(0,0,0,.10);
-      padding: 14px 14px;
-      font-size: 18px;
-      outline: none;
-      background: rgba(255,255,255,.95);
-    }
-    .qa-field textarea{ min-height: 110px; resize: vertical; }
-    .qa-full{ grid-column: 1 / -1; }
-    .qa-help{ margin-top: 12px; font-size: 16px; opacity: .75; }
-
-    /* ===== Image slide (≈ +20%) ===== */
-    .img-wrap{
-      width: min(1032px, 98%);                 /* was 860 */
-      margin: 12px auto 0;
-      text-align:center;
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(0,0,0,.08);
-      border-radius: 26px;
-      box-shadow: 0 14px 34px rgba(0,0,0,.10);
-      overflow:hidden;
-    }
-    .img-wrap img{
-      width:100%;
-      max-height: 504px;                       /* was 420 */
-      object-fit: cover;
-      display:block;
-      background: rgba(0,0,0,.06);
-    }
-    .img-cap{
-      padding: 17px 20px 20px;
-      text-align:left;
-      white-space: pre-line;
-    }
-    .img-cap .cap-title{
-      font-weight: 900;
-      color:#b4003d;
-      margin-bottom: 8px;
-      font-size: 20px;
-    }
-    .img-cap .cap-text{
-      color:#111827;
-      line-height: 1.5;
-      font-size: 18px;
-    }
-
+    /* Mobile safety */
     @media (max-width:720px){
-      .qa-grid{ grid-template-columns: 1fr; }
       .match-title{ font-size: 44px; }
       .match-avatars img{ width: 110px; height: 110px; }
       button{ font-size: 20px; }
+      .linkedin-wrap{ width: 96%; padding: 20px 16px 16px; border-radius: 22px; }
+      .linkedin-avatar{ width: 52px; height: 52px; }
+      .linkedin-row{ gap:12px; }
+      .linkedin-sender{ font-size: 20px; }
+      .linkedin-subtitle{ font-size: 14px; }
+      .linkedin-bubble{ font-size: 18px; max-width: 100%; padding: 14px 14px; }
+      .linkedin-date, .linkedin-time{ font-size: 12px; }
     }
     @media (max-width:520px){
       .panel{ min-height: 84vh; }
       button{ width:min(280px, 86vw); }
-      .linkedin-wrap{ width: 96%; padding: 18px 14px 14px; border-radius: 22px; }
-      .linkedin-avatar{ width: 46px; height: 46px; }
-      .linkedin-row{ gap:12px; }
-      .linkedin-bubble{ max-width: 100%; padding: 14px 14px; font-size: 18px; }
     }
   </style>
 </head>
@@ -423,7 +362,7 @@
   <div class="bg-hearts" id="bgHearts"></div>
   <div class="burst" id="burst"></div>
 
-  <main class="panel">
+  <main class="panel" id="panel">
     <img id="coverCat" src="cat.gif" class="cover-cat" alt="cat" />
     <h1 id="title">Đăng & Nam Story 💕</h1>
     <div class="subline" id="subline"></div>
@@ -431,33 +370,17 @@
     <div class="story" id="story"></div>
 
     <div class="dots" id="dots"></div>
-
     <div class="from" id="fromLine">— Dang</div>
 
     <div class="actions" id="actions"></div>
-
     <div class="hint" id="hint"></div>
   </main>
 
 <script>
-  // ============================
-  // FILES YOU SHOULD HAVE (repo root)
-  // cat.gif
-  // dang.jpeg
-  // dangtinder.jpeg   <-- NEW (for Tinder left image)
-  // nam.jpeg
-  //
-  // kiss.jpg
-  // rejected.jpg
-  // hangout1.jpg
-  // sayyes.jpg
-  // love-start.jpg
-  // dalat.jpg
-  // phanthiet.jpg
-  // ============================
+  // Required files in repo root:
+  // cat.gif, dang.jpeg, dangtinder.jpeg, nam.jpeg
 
   const slides = [
-    // 1) Cover
     {
       type: "cover",
       title: "Đăng & Nam Story 💕",
@@ -465,13 +388,11 @@
       story: "",
       hint: "Tap Start 💗"
     },
-
-    // 2) LinkedIn
     {
       type: "linkedin",
       title: "Where our story begin 💗",
       subline: "",
-      showFooter: true,
+      showFooter: true, // ✅ footer only on this slide
       linkedIn: {
         date: "SEP 4, 2025",
         senderName: "Dang Nguyen",
@@ -480,175 +401,23 @@
         senderTitleLine2: "RCR Technical Infrastructure Vietnam",
         time: "8:16 AM",
         avatar: "dang.jpeg",
-        message: "Hi Nam,\n\nMình là Đăng hiện đang làm bên RCR, rất vui được kết nối!"
+        message: "Hi Nam,\\n\\nMình là Đăng hiện đang làm bên RCR, rất vui được kết nối!"
       },
       hint: "Next → and that’s where everything started 💗"
     },
-
-    // 3
-    {
-      type: "text",
-      title: "But… 😔",
-      subline: "",
-      story: "Nhưng mà…\ncuộc trò chuyện của chúng ta chỉ kéo dài đúng 6 ngày thôi… 😔",
-      hint: "Short time… but strong feeling."
-    },
-
-    // 4
-    {
-      type: "text",
-      title: "Suddenly…",
-      subline: "06 October 2025",
-      story: "Đột nhiên… ngày 06/10/2025\nmột cái ‘plot twist’ xuất hiện 😆",
-      hint: "Next →"
-    },
-
-    // 5) Tinder Match
     {
       type: "match",
       title: "It’s a Match! 🔥",
       subline: "Tinder • Short-term Relationship (lol)",
       match: {
         placeLine: "You matched on Tinder.",
-        leftName: "Dang",
-        rightName: "Nam",
-        leftImg: "dangtinder.jpeg",   // ✅ changed here
+        leftImg: "dangtinder.jpeg",   // ✅ changed
         rightImg: "nam.jpeg",
         buttonText: "SEND A MESSAGE",
         note: "Ok… Short-term relationship (lol) 😆"
       },
       hint: "Next →"
     },
-
-    // 6) QA
-    {
-      type: "qa",
-      title: "Mini Q&A 🎯",
-      subline: "First time we met",
-      qa: { question: "Answer these 3 questions (for memory 💗):" },
-      hint: "Fill it and press Submit →"
-    },
-
-    // 7
-    { type: "text", title: "Opps… 😅", subline: "", story: "Opps, it’s wrong…\nYou don’t love me 😭", hint: "Next →" },
-
-    // 8
-    { type: "text", title: "KKK 😆", subline: "", story: "Just kidding!\nWhatever… I still love you 💗", hint: "Next →" },
-
-    // 9
-    {
-      type: "text",
-      title: "First date 💚",
-      subline: "13 Oct 2025",
-      story:
-`We met first time on 13/10/2025 — here is our first dating:
-
-With matcha latte in hand, I pick you up around 6:30 PM at The Hallmark,
-but unfortunately, it was rainy, so we had to take a taxi to Sushi House in D4,
-then back to The Hallmark to take the bike and drove around.
-
-Do you know what is my thought for our first dating?`,
-      hint: "Next →"
-    },
-
-    // 10
-    { type: "text", title: "My thought 💭", subline: "", story: "Why does this person make me smile so easily? 😊", hint: "Next →" },
-
-    // 11
-    {
-      type: "text",
-      title: "After that…",
-      subline: "",
-      story: "After the first dating, we talked more and more,\nknow more about each other…\nand you started overthinking about me lol 😆",
-      hint: "Next →"
-    },
-
-    // 12
-    {
-      type: "image",
-      title: "Our first kiss 💋",
-      subline: "Oct 25th",
-      image: { src: "kiss.jpg", capTitle: "Our first kiss 💋", capText: "On Oct 25th… a moment I still remember clearly." },
-      hint: "Next →"
-    },
-
-    // 13
-    {
-      type: "image",
-      title: "The day I was rejected…",
-      subline: "Nov 22",
-      image: { src: "rejected.jpg", capTitle: "Nov 22", capText: "The date I was rejected… and also not allowed me to stay." },
-      hint: "Next →"
-    },
-
-    // 14
-    {
-      type: "text",
-      title: "So sad… 😔",
-      subline: "",
-      story: "Buồn thật… nhưng em vẫn yêu anh.\nVà em tự cho mình thêm một cơ hội\nđể tiếp tục theo đuổi anh —\nkhông phải vì cố chấp,\nmà vì em tin cảm xúc của mình là thật. 💗",
-      hint: "Next →"
-    },
-
-    // 15
-    {
-      type: "image",
-      title: "We still dated & hangout ✨",
-      subline: "",
-      image: { src: "hangout1.jpg", capTitle: "Dating & hangout", capText: "We still spent time together…\n(add more photos later if you want)" },
-      hint: "Next →"
-    },
-
-    // 16
-    {
-      type: "image",
-      title: "The day you said YES ✅",
-      subline: "",
-      image: {
-        src: "sayyes.jpg",
-        capTitle: "The day you said YES",
-        capText: "“Anh không hứa sẽ yêu em mãi mãi hay bao lâu,\nnhưng anh hứa sẽ yêu em trọn vẹn từng ngày em ở bên anh.”"
-      },
-      hint: "Next →"
-    },
-
-    // 17
-    {
-      type: "image",
-      title: "Our love story officially started 💞",
-      subline: "20.12",
-      image: { src: "love-start.jpg", capTitle: "20.12", capText: "We start our love story from 20.12 💗" },
-      hint: "Next →"
-    },
-
-    // 18
-    {
-      type: "image",
-      title: "Our first trip 🌲",
-      subline: "Da Lat",
-      image: { src: "dalat.jpg", capTitle: "Da Lat", capText: "Our first trip together — Da Lat 💚" },
-      hint: "Next →"
-    },
-
-    // 19
-    {
-      type: "image",
-      title: "Second trip 🌊",
-      subline: "Phan Thiet",
-      image: { src: "phanthiet.jpg", capTitle: "Phan Thiet", capText: "Second trip — Phan Thiet 🌊" },
-      hint: "Next →"
-    },
-
-    // 20
-    {
-      type: "text",
-      title: "One thing I want to say…",
-      subline: "",
-      story: "Anh có thể nghi ngờ bất cứ điều gì về anh…\nnhưng xin đừng nghi ngờ tình yêu của em dành cho anh. 💗",
-      hint: "Next →"
-    },
-
-    // 21) Final
     {
       type: "final",
       title: "Will you be my Valentine? 💞",
@@ -658,7 +427,6 @@ Do you know what is my thought for our first dating?`,
     }
   ];
 
-  // ===== DOM =====
   const bg = document.getElementById("bgHearts");
   const burst = document.getElementById("burst");
   const titleEl = document.getElementById("title");
@@ -668,12 +436,12 @@ Do you know what is my thought for our first dating?`,
   const actionsEl = document.getElementById("actions");
   const hintEl = document.getElementById("hint");
   const coverCatEl = document.getElementById("coverCat");
-  const panelEl = document.querySelector(".panel");
+  const panelEl = document.getElementById("panel");
 
   let step = 0;
   let yesScale = 1;
 
-  // ===== floating hearts =====
+  // Floating hearts bg
   const heartChars = ["💗","💖","💘","💕","💞","❤️"];
   function spawnBgHeart(){
     const el = document.createElement("div");
@@ -730,7 +498,7 @@ Do you know what is my thought for our first dating?`,
             <div>
               <div class="linkedin-sender">${L.senderName} ${L.senderBadge || ""}</div>
               <div class="linkedin-subtitle">${L.senderTitleLine1} •<br>${L.senderTitleLine2}</div>
-              <div class="linkedin-bubble">${L.message.replaceAll("\n","<br>")}</div>
+              <div class="linkedin-bubble">${L.message.replaceAll("\\n","<br>")}</div>
               <div class="linkedin-time">${L.time}</div>
             </div>
           </div>
@@ -746,14 +514,12 @@ Do you know what is my thought for our first dating?`,
           <div class="match-bg"></div>
           <div class="match-inner">
             <div class="match-title">It’s a Match!</div>
-            <div class="match-sub">${M.placeLine}</div>
-
+            <div class="match-sub">${slide.subline}</div>
             <div class="match-avatars">
               <img src="${M.leftImg}" onerror="this.style.opacity=.15">
               <div class="match-pin">📍</div>
               <img src="${M.rightImg}" onerror="this.style.opacity=.15">
             </div>
-
             <button class="match-btn" type="button">${M.buttonText}</button>
             <div class="match-note">${M.note}</div>
           </div>
@@ -762,47 +528,6 @@ Do you know what is my thought for our first dating?`,
       return;
     }
 
-    if (slide.type === "qa"){
-      storyEl.innerHTML = `
-        <div class="qa-wrap">
-          <div class="qa-q">${slide.qa.question}</div>
-
-          <div class="qa-grid">
-            <div class="qa-field">
-              <label>Date</label>
-              <input id="qaDate" placeholder="e.g., 13/10/2025" />
-            </div>
-            <div class="qa-field">
-              <label>Place</label>
-              <input id="qaPlace" placeholder="e.g., The Hallmark" />
-            </div>
-            <div class="qa-field qa-full">
-              <label>First Impression</label>
-              <textarea id="qaImpression" placeholder="Write your first impression..."></textarea>
-            </div>
-          </div>
-
-          <div class="qa-help">Press <b>Submit</b> to continue 💗</div>
-        </div>
-      `;
-      return;
-    }
-
-    if (slide.type === "image"){
-      const I = slide.image;
-      storyEl.innerHTML = `
-        <div class="img-wrap">
-          <img src="${I.src}" alt="" onerror="this.style.height='380px'; this.style.objectFit='contain'; this.style.opacity='.55';">
-          <div class="img-cap">
-            <div class="cap-title">${I.capTitle}</div>
-            <div class="cap-text">${I.capText}</div>
-          </div>
-        </div>
-      `;
-      return;
-    }
-
-    // text / cover / final
     storyEl.textContent = slide.story || "";
     storyEl.style.whiteSpace = "pre-line";
   }
@@ -814,7 +539,7 @@ Do you know what is my thought for our first dating?`,
     sublineEl.textContent = s.subline || "";
     hintEl.textContent = s.hint || "";
 
-    // Cover: center + show cat only on cover
+    // cover mode + cat
     if (s.type === "cover") {
       panelEl.classList.add("cover-mode");
       coverCatEl.style.display = "block";
@@ -823,7 +548,7 @@ Do you know what is my thought for our first dating?`,
       coverCatEl.style.display = "none";
     }
 
-    // Footer (dots + —Dang): only when showFooter is true
+    // ✅ footer only when showFooter === true
     if (s.showFooter === true) panelEl.classList.add("show-footer");
     else panelEl.classList.remove("show-footer");
 
@@ -832,7 +557,7 @@ Do you know what is my thought for our first dating?`,
 
     actionsEl.innerHTML = "";
 
-    // COVER: Start button only
+    // Cover: Start only
     if (s.type === "cover") {
       const start = document.createElement("button");
       start.className = "next";
@@ -858,7 +583,7 @@ Do you know what is my thought for our first dating?`,
       render();
     };
 
-    // FINAL: Yes/No
+    // Final slide buttons
     if (s.type === "final"){
       const yes = document.createElement("button");
       yes.className = "yes";
@@ -902,7 +627,7 @@ Do you know what is my thought for our first dating?`,
 
         titleEl.textContent = "I knew you’d say yes — I love you 💕";
         sublineEl.textContent = "";
-        storyEl.textContent = "Happy Valentine’s Day, Nam ❤️\nLet’s make more memories together.";
+        storyEl.textContent = "Happy Valentine’s Day, Nam ❤️\\nLet’s make more memories together.";
         storyEl.style.whiteSpace = "pre-line";
         hintEl.textContent = "";
         actionsEl.innerHTML = "";
@@ -913,25 +638,10 @@ Do you know what is my thought for our first dating?`,
       return;
     }
 
-    // QA: Submit
-    if (s.type === "qa"){
-      const submit = document.createElement("button");
-      submit.className = "next";
-      submit.textContent = "Submit ✅";
-      submit.onclick = ()=>{
-        popBurst(window.innerWidth/2, window.innerHeight/2);
-        step = Math.min(slides.length-1, step+1);
-        render();
-      };
-      actionsEl.appendChild(back);
-      actionsEl.appendChild(submit);
-      return;
-    }
-
-    // Normal: Next
+    // Normal next
     const next = document.createElement("button");
     next.className = "next";
-    next.textContent = (step === slides.length-2) ? "Next 💞" : "Next";
+    next.textContent = "Next";
     next.onclick = ()=>{
       step = Math.min(slides.length-1, step+1);
       popBurst(window.innerWidth/2, window.innerHeight/2);
