@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Valentine’s Day</title>
+  <style>
+    :root {
+      --bg1: #fff1f5;
+      --bg2: #ffe4ec;
+      --card: rgba(255,255,255,0.85);
+      --text: #1f2937;
+      --accent: #ff3b7a;
+      --accent2: #ff7aa8;
+      --shadow: 0 20px 60px rgba(0,0,0,0.12);
+      --radius: 24px;
+      --btnRadius: 999px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: radial-gradient(1200px 800px at 20% 20%, var(--bg2), transparent 60%),
+                  radial-gradient(1200px 800px at 80% 80%, var(--bg2), transparent 60%),
+                  linear-gradient(135deg, var(--bg1), #ffffff);
+    }
+
+    .wrap {
+      width: min(920px, 92vw);
+      padding: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 3vw, 34px);
+      border: 1px solid rgba(255, 59, 122, 0.20);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: var(--btnRadius);
+      background: rgba(255, 59, 122, 0.10);
+      border: 1px solid rgba(255, 59, 122, 0.25);
+      color: #b4003d;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      font-size: 14px;
+    }
+
+    h1 {
+      margin: 14px 0 10px;
+      font-size: clamp(24px, 3.2vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -0.6px;
+    }
+
+    .msg {
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.45;
+      margin: 0 0 18px;
+      white-space: pre-line;
+    }
+
+    .from {
+      margin-top: 10px;
+      font-weight: 700;
+      color: #b4003d;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+      align-items: center;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      padding: 12px 18px;
+      border-radius: var(--btnRadius);
+      font-weight: 700;
+      font-size: 16px;
+      transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:active { transform: scale(0.98); }
+
+    .btn-yes {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      box-shadow: 0 12px 30px rgba(255, 59, 122, 0.35);
+    }
+    .btn-yes:hover { box-shadow: 0 14px 34px rgba(255, 59, 122, 0.45); }
+
+    .btn-no {
+      background: rgba(31,41,55,0.08);
+      color: #111827;
+      border: 1px solid rgba(31,41,55,0.12);
+      position: relative;
+    }
+
+    .btn-music {
+      background: rgba(255, 59, 122, 0.12);
+      color: #b4003d;
+      border: 1px solid rgba(255, 59, 122, 0.25);
+      font-weight: 800;
+    }
+
+    .hint {
+      margin-top: 10px;
+      font-size: 13px;
+      opacity: 0.75;
+    }
+
+    /* Final screen */
+    .final {
+      display: none;
+      text-align: center;
+      padding: clamp(26px, 4vw, 44px) clamp(18px, 3vw, 34px);
+    }
+    .final h2 {
+      margin: 0 0 8px;
+      font-size: clamp(22px, 3vw, 38px);
+      color: #b4003d;
+    }
+    .final p {
+      margin: 0;
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.45;
+      white-space: pre-line;
+    }
+
+    /* Floating hearts */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -40px;
+      font-size: 18px;
+      opacity: 0.9;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+      animation: floatUp linear forwards;
+      will-change: transform, opacity;
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0) translateX(0) scale(0.9); opacity: 0; }
+      10%  { opacity: 0.95; }
+      100% { transform: translateY(-115vh) translateX(var(--drift)) scale(1.25); opacity: 0; }
+    }
+
+    /* Cute corner glow */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -80px;
+      background: radial-gradient(400px 260px at 20% 20%, rgba(255,59,122,0.22), transparent 70%),
+                  radial-gradient(460px 300px at 80% 80%, rgba(255,122,168,0.22), transparent 70%);
+      z-index: -1;
+      transform: rotate(6deg);
+    }
+
+    /* Make No button movable (we'll reposition via JS using translate) */
+    .no-wrap {
+      position: relative;
+    }
+
+    @media (max-width: 520px) {
+      .actions { flex-direction: column; align-items: stretch; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" id="hearts"></div>
+
+  <main class="wrap">
+    <section class="card" id="card">
+      <div class="badge">💌 Valentine Link</div>
+
+      <div id="screen-main">
+        <h1>Happy Valentine’s Day, Nam ❤️</h1>
+
+        <p class="msg">You make every day feel like sunshine since the day we met
+Will you be my Valentine?</p>
+
+        <div class="from">— Dang</div>
+
+        <div class="actions">
+          <button class="btn-yes" id="btnYes">Yes ❤️</button>
+          <span class="no-wrap">
+            <button class="btn-no" id="btnNo">No 😢</button>
+          </span>
+          <button class="btn-music" id="btnMusic" aria-pressed="false">▶ Play music</button>
+        </div>
+
+        <div class="hint">Tip: If “No” is hard to click… that’s the point 😄</div>
+      </div>
+
+      <div class="final" id="screen-final">
+        <h2>I knew you’d say yes — I love you 💕</h2>
+        <p>Happy Valentine’s Day, Nam ❤️
+Let’s make more memories together.</p>
+        <div class="from" style="margin-top:14px;">— Dang</div>
+      </div>
+    </section>
+  </main>
+
+  <!--
+    IMPORTANT about music:
+    - YouTube audio cannot be played directly as an MP3 without hosting/embedding restrictions.
+    - Browsers block autoplay; users must click.
+    - Best practice: use a small mp3 file hosted in your repo (e.g. /music.mp3) OR use a legal mp3 URL.
+    Steps below show how.
+  -->
+  <audio id="audio" preload="auto" loop></audio>
+
+  <script>
+    // ======== CONFIG ========
+    // Option A (recommended): place an MP3 file in the same folder and set:
+    // const AUDIO_SRC = "music.mp3";
+    //
+    // Option B: use any direct MP3 URL you have rights to use.
+    //
+    // NOTE: Your YouTube link is included below for reference, but it is NOT a direct MP3 stream.
+    const YOUTUBE_REFERENCE = "https://www.youtube.com/watch?v=yhgjJTCQ9SY&list=RDyhgjJTCQ9SY&start_radio=1";
+    const AUDIO_SRC = ""; // <-- set to "music.mp3" after you add an mp3 in your repo
+
+    const hearts = document.getElementById("hearts");
+    const btnYes = document.getElementById("btnYes");
+    const btnNo = document.getElementById("btnNo");
+    const btnMusic = document.getElementById("btnMusic");
+    const audio = document.getElementById("audio");
+    const screenMain = document.getElementById("screen-main");
+    const screenFinal = document.getElementById("screen-final");
+
+    // Load audio if provided
+    if (AUDIO_SRC) audio.src = AUDIO_SRC;
+
+    // ======== Hearts animation ========
+    const heartChars = ["❤️","💗","💖","💘","💕","💞"];
+    function spawnHeart() {
+      const el = document.createElement("div");
+      el.className = "heart";
+      el.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+      const left = Math.random() * 100;
+      const size = 14 + Math.random() * 18; // px
+      const duration = 5 + Math.random() * 5; // seconds
+      const drift = (-40 + Math.random() * 80) + "px";
+      el.style.left = left + "vw";
+      el.style.fontSize = size + "px";
+      el.style.setProperty("--drift", drift);
+      el.style.animationDuration = duration + "s";
+      hearts.appendChild(el);
+      setTimeout(() => el.remove(), duration * 1000);
+    }
+    setInterval(spawnHeart, 350);
+
+    // ======== No button: run away ========
+    function moveNoButton() {
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+      const rect = btnNo.getBoundingClientRect();
+      const pad = 16;
+
+      // Random new position within viewport, keep button fully visible
+      const x = pad + Math.random() * (vw - rect.width - pad * 2);
+      const y = pad + Math.random() * (vh - rect.height - pad * 2);
+
+      // Use fixed positioning so it can escape anywhere
+      btnNo.style.position = "fixed";
+      btnNo.style.left = x + "px";
+      btnNo.style.top = y + "px";
+      btnNo.style.zIndex = 9999;
+    }
+
+    // On desktop: hover triggers escape; on mobile: touchstart triggers escape
+    btnNo.addEventListener("mouseenter", moveNoButton);
+    btnNo.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); }, { passive: false });
+
+    // If they do manage to click "No", just move it again
+    btnNo.addEventListener("click", (e) => { e.preventDefault(); moveNoButton(); });
+
+    // ======== Yes button: show final screen ========
+    btnYes.addEventListener("click", () => {
+      screenMain.style.display = "none";
+      screenFinal.style.display = "block";
+      screenFinal.classList.add("show");
+
+      // Optional: burst of hearts
+      for (let i = 0; i < 30; i++) setTimeout(spawnHeart, i * 30);
+
+      // Try playing audio if available (user clicked, so allowed)
+      if (AUDIO_SRC && audio.paused) audio.play().catch(()=>{});
+      btnMusic.textContent = audio.paused ? "▶ Play music" : "⏸ Pause music";
+      btnMusic.setAttribute("aria-pressed", String(!audio.paused));
+    });
+
+    // ======== Music button ========
+    btnMusic.addEventListener("click", async () => {
+      // If no audio set, explain
+      if (!AUDIO_SRC) {
+        alert(
+          "Music is not set yet.\n\n" +
+          "To add music:\n" +
+          "1) Download an MP3 you have rights to use\n" +
+          "2) Put it next to index.html as: music.mp3\n" +
+          "3) Set AUDIO_SRC = 'music.mp3' in the code\n\n" +
+          "YouTube link cannot be used as direct audio:\n" + YOUTUBE_REFERENCE
+        );
+        return;
+      }
+
+      try {
+        if (audio.paused) await audio.play();
+        else audio.pause();
+
+        btnMusic.textContent = audio.paused ? "▶ Play music" : "⏸ Pause music";
+        btnMusic.setAttribute("aria-pressed", String(!audio.paused));
+      } catch (err) {
+        alert("Couldn't play audio. Try again or use a different MP3 source.");
+      }
+    });
+  </script>
+</body>
+</html>
