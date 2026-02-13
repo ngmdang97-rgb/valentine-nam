@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -47,7 +47,7 @@
       100%{ transform:translateY(-120vh) translateX(var(--drift)) scale(1.25); opacity:0}
     }
 
-    /* Main panel (global bigger) */
+    /* Main panel (bigger for all slides) */
     .panel{
       width:min(1176px, 96vw);
       min-height:min(816px, 86vh);
@@ -76,18 +76,18 @@
       z-index:-1;
     }
 
-    /* Cover mode (center) */
-    .cover-mode{ justify-content: center !important; }
+    /* Cover mode: center content */
+    .cover-mode{ justify-content:center !important; }
     .cover-mode .actions{ margin-top: 10px !important; padding-top: 0 !important; }
     .cover-mode .story{ margin-top: 0 !important; min-height: 0 !important; }
-    .cover-mode .dots, .cover-mode .from{ display:none !important; }
     .cover-mode .hint{ margin-top: 8px !important; }
+    .cover-mode .dots, .cover-mode .from{ display:none !important; }
 
     /* Cover cat */
     .cover-cat{
       width: 144px;
       margin: 0 auto 8px;
-      display: none;
+      display:none;
       animation: catBob 2.2s ease-in-out infinite;
       filter: drop-shadow(0 12px 20px rgba(0,0,0,.15));
       user-select:none;
@@ -120,12 +120,10 @@
       white-space: pre-line;
     }
 
-    /* ✅ FOOTER CONTROL (FIXED)
-       Hidden by default, shown ONLY when panel has .show-footer
-       IMPORTANT: No other CSS should set display:flex for .dots */
-    .dots, .from{ display:none; }
-    .panel.show-footer .dots{ display:flex; }
-    .panel.show-footer .from{ display:block; }
+    /* ✅ FOOTER: hidden by default; show ONLY when .panel has .show-footer */
+    .dots, .from{ display:none !important; }
+    .panel.show-footer .dots{ display:flex !important; }
+    .panel.show-footer .from{ display:block !important; }
 
     .dots{
       gap:10px;
@@ -195,33 +193,33 @@
       100%{ transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.15); opacity: 0 }
     }
 
-    /* ===== LinkedIn message card (BIGGER +20% from your latest) ===== */
+    /* ===== LinkedIn message card (+20% bigger) ===== */
     .linkedin-wrap{
-      width: min(1104px, 98%);     /* 920 * 1.2 */
-      margin: 16px auto 0;
+      width: min(984px, 98%); /* 820 -> +20% */
+      margin: 12px auto 0;
       text-align: left;
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.90);
       border: 1px solid rgba(0,0,0,.08);
-      border-radius: 31px;         /* 26 * 1.2 */
-      box-shadow: 0 20px 52px rgba(0,0,0,.12);
+      border-radius: 26px;
+      box-shadow: 0 18px 44px rgba(0,0,0,.12);
       overflow: hidden;
-      padding: 29px 26px 24px;     /* +20% */
+      padding: 22px 19px 19px; /* +20% */
     }
     .linkedin-date{
       text-align:center;
-      font-size: 17px;             /* 14 * 1.2 */
+      font-size: 14px;
       opacity: .55;
-      margin: 0 0 20px;
-      letter-spacing: .7px;
+      margin: 0 0 18px;
+      letter-spacing: .5px;
     }
     .linkedin-row{
       display:flex;
-      gap:19px;                    /* 16 * 1.2 */
+      gap:14px;
       align-items:flex-start;
     }
     .linkedin-avatar{
-      width: 70px;                 /* 58 * 1.2 */
-      height: 70px;
+      width: 55px;
+      height: 55px;
       border-radius: 999px;
       object-fit: cover;
       border: 2px solid rgba(255,46,122,.18);
@@ -229,35 +227,35 @@
     }
     .linkedin-sender{
       font-weight: 900;
-      font-size: 26px;             /* 22 * 1.2 */
+      font-size: 20px;
       margin-top: 2px;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
       display:flex;
       align-items:center;
-      gap:7px;
+      gap:6px;
     }
     .linkedin-subtitle{
-      font-size: 19px;             /* 16 * 1.2 */
+      font-size: 16px;
       color: #6b7280;
       margin-top: 0px;
-      margin-bottom: 17px;         /* 14 * 1.2 */
+      margin-bottom: 14px;
       line-height: 1.35;
     }
     .linkedin-bubble{
       background: white;
       border: 1px solid rgba(0,0,0,.08);
-      border-radius: 22px;         /* 18 * 1.2 */
-      padding: 19px 22px;          /* 16/18 * 1.2 */
-      max-width: 912px;            /* 760 * 1.2 */
-      box-shadow: 0 14px 32px rgba(0,0,0,.10);
+      border-radius: 22px;
+      padding: 14px 17px;
+      max-width: 768px;
+      box-shadow: 0 12px 26px rgba(0,0,0,.10);
       white-space: pre-line;
-      font-size: 23px;             /* 19 * 1.2 */
+      font-size: 19px;
       line-height: 1.5;
     }
     .linkedin-time{
-      font-size: 17px;             /* 14 * 1.2 */
+      font-size: 14px;
       opacity: .55;
-      margin-top: 14px;
+      margin-top: 12px;
     }
 
     /* ===== Tinder Match card ===== */
@@ -338,22 +336,91 @@
       opacity: .8;
     }
 
-    /* Mobile safety */
+    /* ===== Image slide card ===== */
+    .img-wrap{
+      width: min(1032px, 98%);
+      margin: 12px auto 0;
+      text-align:center;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 26px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
+      overflow:hidden;
+    }
+    .img-wrap img{
+      width:100%;
+      max-height: 504px;
+      object-fit: cover;
+      display:block;
+      background: rgba(0,0,0,.06);
+    }
+    .img-cap{
+      padding: 17px 20px 20px;
+      text-align:left;
+      white-space: pre-line;
+    }
+    .img-cap .cap-title{
+      font-weight: 900;
+      color:#b4003d;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+    .img-cap .cap-text{
+      color:#111827;
+      line-height: 1.5;
+      font-size: 18px;
+    }
+
+    /* ===== QA card ===== */
+    .qa-wrap{
+      width: min(984px, 98%);
+      margin: 12px auto 0;
+      text-align:left;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 26px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
+      padding: 22px 20px 20px;
+    }
+    .qa-q{
+      font-weight: 900;
+      margin: 0 0 12px;
+      color:#b4003d;
+      font-size: 20px;
+    }
+    .qa-grid{
+      display:grid;
+      gap:14px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .qa-field{ display:flex; flex-direction:column; gap:8px; }
+    .qa-field label{ font-size: 16px; color: var(--muted); font-weight: 700; }
+    .qa-field input, .qa-field textarea{
+      width:100%;
+      border-radius: 17px;
+      border: 1px solid rgba(0,0,0,.10);
+      padding: 14px 14px;
+      font-size: 18px;
+      outline: none;
+      background: rgba(255,255,255,.95);
+    }
+    .qa-field textarea{ min-height: 110px; resize: vertical; }
+    .qa-full{ grid-column: 1 / -1; }
+    .qa-help{ margin-top: 12px; font-size: 16px; opacity: .75; }
+
     @media (max-width:720px){
+      .qa-grid{ grid-template-columns: 1fr; }
       .match-title{ font-size: 44px; }
       .match-avatars img{ width: 110px; height: 110px; }
       button{ font-size: 20px; }
-      .linkedin-wrap{ width: 96%; padding: 20px 16px 16px; border-radius: 22px; }
-      .linkedin-avatar{ width: 52px; height: 52px; }
-      .linkedin-row{ gap:12px; }
-      .linkedin-sender{ font-size: 20px; }
-      .linkedin-subtitle{ font-size: 14px; }
-      .linkedin-bubble{ font-size: 18px; max-width: 100%; padding: 14px 14px; }
-      .linkedin-date, .linkedin-time{ font-size: 12px; }
     }
     @media (max-width:520px){
       .panel{ min-height: 84vh; }
       button{ width:min(280px, 86vw); }
+      .linkedin-wrap{ width: 96%; padding: 18px 14px 14px; border-radius: 22px; }
+      .linkedin-avatar{ width: 46px; height: 46px; }
+      .linkedin-row{ gap:12px; }
+      .linkedin-bubble{ max-width: 100%; padding: 14px 14px; font-size: 18px; }
     }
   </style>
 </head>
@@ -377,53 +444,190 @@
   </main>
 
 <script>
-  // Required files in repo root:
-  // cat.gif, dang.jpeg, dangtinder.jpeg, nam.jpeg
+  /*
+    Put these files in repo root:
+    cat.gif
+    dang.jpeg
+    dangtinder.jpeg
+    nam.jpeg
+
+    Optional images for later slides (you can add later):
+    firstdate.jpg, kiss.jpg, rejected.jpg, hangout.jpg, sayyes.jpg, lovestart.jpg, dalat.jpg, phanthiet.jpg
+  */
 
   const slides = [
+    // 1 Cover
+    { type:"cover", title:"Đăng & Nam Story 💕", subline:"", story:"", hint:"Tap Start 💗" },
+
+    // 2 LinkedIn (ONLY slide with footer dots + —Dang)
     {
-      type: "cover",
-      title: "Đăng & Nam Story 💕",
-      subline: "",
-      story: "",
-      hint: "Tap Start 💗"
-    },
-    {
-      type: "linkedin",
-      title: "Where our story begin 💗",
-      subline: "",
-      showFooter: true, // ✅ footer only on this slide
-      linkedIn: {
-        date: "SEP 4, 2025",
-        senderName: "Dang Nguyen",
-        senderBadge: "🛡️",
-        senderTitleLine1: "Integrated Facilities Management",
-        senderTitleLine2: "RCR Technical Infrastructure Vietnam",
-        time: "8:16 AM",
-        avatar: "dang.jpeg",
-        message: "Hi Nam,\\n\\nMình là Đăng hiện đang làm bên RCR, rất vui được kết nối!"
+      type:"linkedin",
+      title:"Where our story begin 💗",
+      subline:"",
+      showFooter:true,
+      linkedIn:{
+        date:"SEP 4, 2025",
+        senderName:"Dang Nguyen",
+        senderBadge:"🛡️",
+        senderTitleLine1:"Integrated Facilities Management",
+        senderTitleLine2:"RCR Technical Infrastructure Vietnam",
+        time:"8:16 AM",
+        avatar:"dang.jpeg",
+        message:"Hi Nam,\\n\\nMình là Đăng hiện đang làm bên RCR, rất vui được kết nối!"
       },
-      hint: "Next → and that’s where everything started 💗"
+      hint:"Next → and that’s where everything started 💗"
     },
+
+    // 3
+    { type:"text", title:"But… 😔", subline:"", story:"Nhưng mà…\\ncuộc trò chuyện của chúng ta chỉ kéo dài đúng 6 ngày thôi… 😔", hint:"Next →" },
+
+    // 4
+    { type:"text", title:"Suddenly…", subline:"06 October 2025", story:"Đột nhiên… ngày 06/10/2025\\nmột cái ‘plot twist’ xuất hiện 😆", hint:"Next →" },
+
+    // 5 Tinder match
     {
-      type: "match",
-      title: "It’s a Match! 🔥",
-      subline: "Tinder • Short-term Relationship (lol)",
-      match: {
-        placeLine: "You matched on Tinder.",
-        leftImg: "dangtinder.jpeg",   // ✅ changed
-        rightImg: "nam.jpeg",
-        buttonText: "SEND A MESSAGE",
-        note: "Ok… Short-term relationship (lol) 😆"
+      type:"match",
+      title:"We matched 💞",
+      subline:"Tinder • Short-term Relationship (lol)",
+      match:{
+        placeLine:"You matched on Tinder.",
+        leftImg:"dangtinder.jpeg",    // ✅ Dang (sender)
+        rightImg:"nam.jpeg",
+        buttonText:"SEND A MESSAGE",
+        note:"Short-term Relationship (lol) 😆"
       },
-      hint: "Next →"
+      hint:"Next →"
     },
+
+    // 6 Q&A
     {
-      type: "final",
-      title: "Will you be my Valentine? 💞",
-      subline: "",
-      story: "Nam… Will you be my Valentine? 💗",
-      hint: "Tip: try to press “No”… if you can 😄"
+      type:"qa",
+      title:"Mini Q&A 🎯",
+      subline:"First time we met",
+      qa:{ question:"Answer these 3 questions (for memory 💗):" },
+      hint:"Fill it and press Submit →"
+    },
+
+    // 7
+    { type:"text", title:"Opps… 😭", subline:"", story:"Opps, it’s wrong…\\nYou don’t love me 😭", hint:"Next →" },
+
+    // 8
+    { type:"text", title:"KKK 😆", subline:"", story:"Just kidding!\\nWhatever… I still love you 💗", hint:"Next →" },
+
+    // 9 First date long story
+    {
+      type:"text",
+      title:"First date 💚",
+      subline:"13 Oct 2025",
+      story:
+`We met first time on 13/10/2025, here is our first dating:
+
+With matcha latte in hand, I pick you up around 6:30 PM at the Hallmark,
+but unfortunately, it was rainy, so we have to take the taxi to go to sushi house in D4,
+then back to the Hallmark to take the bike and drove around.
+
+Do you know what is my thought for our first dating?`,
+      hint:"Next →"
+    },
+
+    // 10 Thought
+    { type:"text", title:"My thought 💭", subline:"", story:"Why does this person make me smile so easily? 😊", hint:"Next →" },
+
+    // 11 After first date
+    { type:"text", title:"After the first date…", subline:"", story:"After the first dating, we talk more and more,\\nand know more each other…\\nand you start over thinking about me lol 😆", hint:"Next →" },
+
+    // 12 First kiss (image placeholder)
+    {
+      type:"image",
+      title:"Our first kiss 💋",
+      subline:"Oct 25th",
+      image:{ src:"kiss.jpg", capTitle:"Our first kiss 💋", capText:"On Oct 25th… (replace photo later)" },
+      hint:"Next →"
+    },
+
+    // 13 Rejected (image placeholder)
+    {
+      type:"image",
+      title:"Nov 22…",
+      subline:"",
+      image:{ src:"rejected.jpg", capTitle:"Nov 22", capText:"The date I was rejected and also not allow me to stay. (replace photo later)" },
+      hint:"Next →"
+    },
+
+    // 14 Improved Vietnamese line
+    {
+      type:"text",
+      title:"So sad… 😔",
+      subline:"",
+      story:"So sad… but I still love you.\\nVà em tự cho mình thêm một cơ hội để tiếp tục theo đuổi anh —\\nkhông phải vì cố chấp, mà vì em tin cảm xúc của mình là thật. 💗",
+      hint:"Next →"
+    },
+
+    // 15 Hangout photos placeholder
+    {
+      type:"image",
+      title:"We still dated & hangout ✨",
+      subline:"",
+      image:{ src:"hangout.jpg", capTitle:"Dating & hangout", capText:"Insert some pictures here later 💗" },
+      hint:"Next →"
+    },
+
+    // 16 Say yes quote
+    {
+      type:"image",
+      title:"The day you said YES ✅",
+      subline:"",
+      image:{
+        src:"sayyes.jpg",
+        capTitle:"The day you said YES",
+        capText:"“Anh không hứa sẽ yêu em mãi mãi hay bao lâu, nhưng anh hứa sẽ yêu em trọn vẹn từng ngày em ở bên anh”"
+      },
+      hint:"Next →"
+    },
+
+    // 17 Love story start
+    {
+      type:"image",
+      title:"Our love story started 💞",
+      subline:"20.12",
+      image:{ src:"lovestart.jpg", capTitle:"20.12", capText:"We start our love story from 20.12 💗" },
+      hint:"Next →"
+    },
+
+    // 18 Trip 1
+    {
+      type:"image",
+      title:"Our first trip 🌲",
+      subline:"Da Lat",
+      image:{ src:"dalat.jpg", capTitle:"Da Lat", capText:"Our first trip together — Da Lat 💚" },
+      hint:"Next →"
+    },
+
+    // 19 Trip 2
+    {
+      type:"image",
+      title:"Second trip 🌊",
+      subline:"Phan Thiet",
+      image:{ src:"phanthiet.jpg", capTitle:"Phan Thiet", capText:"Second trip — Phan Thiet 🌊" },
+      hint:"Next →"
+    },
+
+    // 20 Message
+    {
+      type:"text",
+      title:"One thing I want to say…",
+      subline:"",
+      story:"You can doubt anything about you,\\nbut please don’t doubt about my love to you. 💗",
+      hint:"Next →"
+    },
+
+    // 21 Final
+    {
+      type:"final",
+      title:"Will you be my Valentine? 💞",
+      subline:"",
+      story:"Happy Valentine’s Day, Nam ❤️\\n\\nWill you be my Valentine? 💗",
+      hint:"Tip: try to press “No”… if you can 😄"
     }
   ];
 
@@ -441,7 +645,7 @@
   let step = 0;
   let yesScale = 1;
 
-  // Floating hearts bg
+  // Floating hearts background
   const heartChars = ["💗","💖","💘","💕","💞","❤️"];
   function spawnBgHeart(){
     const el = document.createElement("div");
@@ -528,6 +732,46 @@
       return;
     }
 
+    if (slide.type === "qa"){
+      storyEl.innerHTML = `
+        <div class="qa-wrap">
+          <div class="qa-q">${slide.qa.question}</div>
+
+          <div class="qa-grid">
+            <div class="qa-field">
+              <label>Date</label>
+              <input id="qaDate" placeholder="e.g., 13/10/2025" />
+            </div>
+            <div class="qa-field">
+              <label>Place</label>
+              <input id="qaPlace" placeholder="e.g., The Hallmark" />
+            </div>
+            <div class="qa-field qa-full">
+              <label>First Impression</label>
+              <textarea id="qaImpression" placeholder="Write your first impression..."></textarea>
+            </div>
+          </div>
+
+          <div class="qa-help">Press <b>Submit</b> to continue 💗</div>
+        </div>
+      `;
+      return;
+    }
+
+    if (slide.type === "image"){
+      const I = slide.image;
+      storyEl.innerHTML = `
+        <div class="img-wrap">
+          <img src="${I.src}" alt="" onerror="this.style.height='380px'; this.style.objectFit='contain'; this.style.opacity='.55';">
+          <div class="img-cap">
+            <div class="cap-title">${I.capTitle}</div>
+            <div class="cap-text">${I.capText}</div>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
     storyEl.textContent = slide.story || "";
     storyEl.style.whiteSpace = "pre-line";
   }
@@ -539,7 +783,7 @@
     sublineEl.textContent = s.subline || "";
     hintEl.textContent = s.hint || "";
 
-    // cover mode + cat
+    // Cover mode + cat only on slide 1
     if (s.type === "cover") {
       panelEl.classList.add("cover-mode");
       coverCatEl.style.display = "block";
@@ -548,7 +792,7 @@
       coverCatEl.style.display = "none";
     }
 
-    // ✅ footer only when showFooter === true
+    // ✅ Footer ONLY when showFooter true (Slide 2 only)
     if (s.showFooter === true) panelEl.classList.add("show-footer");
     else panelEl.classList.remove("show-footer");
 
@@ -557,7 +801,7 @@
 
     actionsEl.innerHTML = "";
 
-    // Cover: Start only
+    // Cover: Start
     if (s.type === "cover") {
       const start = document.createElement("button");
       start.className = "next";
@@ -571,7 +815,7 @@
       return;
     }
 
-    // Back button
+    // Back
     const back = document.createElement("button");
     back.className = "back";
     back.textContent = "Back";
@@ -583,7 +827,7 @@
       render();
     };
 
-    // Final slide buttons
+    // Final: Yes/No
     if (s.type === "final"){
       const yes = document.createElement("button");
       yes.className = "yes";
@@ -638,7 +882,22 @@
       return;
     }
 
-    // Normal next
+    // QA: Submit
+    if (s.type === "qa"){
+      const submit = document.createElement("button");
+      submit.className = "next";
+      submit.textContent = "Submit ✅";
+      submit.onclick = ()=>{
+        popBurst(window.innerWidth/2, window.innerHeight/2);
+        step = Math.min(slides.length-1, step+1);
+        render();
+      };
+      actionsEl.appendChild(back);
+      actionsEl.appendChild(submit);
+      return;
+    }
+
+    // Normal Next
     const next = document.createElement("button");
     next.className = "next";
     next.textContent = "Next";
