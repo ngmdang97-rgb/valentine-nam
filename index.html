@@ -533,7 +533,7 @@
     }
   </style>
 </head>
-
+<audio id="bgMusic" src="valentine.mp3" loop></audio>
 <body>
   <div class="bg-hearts" id="bgHearts"></div>
   <div class="burst" id="burst"></div>
@@ -1054,6 +1054,19 @@ if (s.mode === "text") {
   }
 
   render();
+// ===== Background Music =====
+const music = document.getElementById("bgMusic");
+
+function playMusic(){
+  if (!music) return;
+  music.volume = 0.5;
+  music.play().catch(()=>{});
+}
+
+// Start music on first user interaction
+document.addEventListener("click", playMusic, { once:true });
+document.addEventListener("touchstart", playMusic, { once:true });
+
 </script>
 </body>
 </html>
