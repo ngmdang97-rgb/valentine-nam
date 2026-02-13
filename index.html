@@ -405,24 +405,32 @@ if (s.isLinkedIn) {
   const L = s.linkedIn;
   storyEl.innerHTML = `
     <div class="linkedin-wrap">
-      <div class="linkedin-top">
-        <img class="linkedin-avatar" src="avatar.jpg" onerror="this.style.display='none'">
-        <div class="linkedin-meta">
-          <div class="linkedin-name">${L.toName}</div>
-          <div class="linkedin-sub">${L.toSub}</div>
-        </div>
-      </div>
 
       <div class="linkedin-body">
         <div class="linkedin-date">${L.date}</div>
 
-        <div class="linkedin-row">
-          <img class="linkedin-avatar" src="dang.jpg" onerror="this.style.display='none'">
-          <div>
-            <div class="linkedin-bubble">${L.message.replaceAll("\n", "<br>")}</div>
-            <div class="linkedin-time">${L.time}</div>
-          </div>
-        </div>
+<div class="linkedin-row">
+  <img class="linkedin-avatar" src="dang.jpeg">
+  <div>
+    <div class="linkedin-name" style="font-weight:700; margin-bottom:4px;">
+      Dang Nguyen
+    </div>
+    <div class="linkedin-row">
+  <img class="linkedin-avatar" src="dang.jpg" onerror="this.style.display='none'">
+  <div>
+    <div class="linkedin-name" style="font-weight:700; margin-bottom:4px;">
+      Dang Nguyen 🛡️
+    </div>
+
+    <div class="linkedin-bubble">${L.message.replaceAll("\n", "<br>")}</div>
+    <div class="linkedin-time">${L.time}</div>
+  </div>
+</div>
+
+    <div class="linkedin-bubble">${L.message.replaceAll("\n", "<br>")}</div>
+    <div class="linkedin-time">${L.time}</div>
+  </div>
+</div>
       </div>
     </div>
   `;
