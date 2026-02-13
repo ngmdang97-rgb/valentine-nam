@@ -32,6 +32,7 @@
       overflow:hidden;
       color:var(--text);
     }
+    
 /* ===== TEXT SLIDE VERTICAL CENTER ===== */
 .panel.text-mode{
   display:flex;
@@ -476,6 +477,72 @@
   font-size:18px;
   border-radius:14px;
 }
+/* ===== Hangout collage (5 pics) ===== */
+.collage{
+  width: min(1030px, 98%);
+  margin: 14px auto 0;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.collage-left{
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0,0,0,.14);
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(255,255,255,.5);
+}
+
+.collage-left img{
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  max-height: 520px;
+  object-fit: cover;
+  display:block;
+}
+
+.collage-right{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 14px;
+}
+
+.collage-tile{
+  border-radius: 22px;
+  overflow:hidden;
+  box-shadow: 0 14px 30px rgba(0,0,0,.12);
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(255,255,255,.5);
+}
+
+.collage-tile img{
+  width:100%;
+  height:100%;
+  min-height: 200px;
+  object-fit: cover;
+  display:block;
+}
+
+/* Make the 5th image a wide pill across both columns */
+.collage-wide{
+  grid-column: 1 / -1;
+  border-radius: 999px;
+}
+.collage-wide img{
+  min-height: 160px;
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 820px){
+  .collage{ grid-template-columns: 1fr; }
+  .collage-left img{ min-height: 320px; }
+  .collage-right{ grid-template-columns: 1fr 1fr; }
+  .collage-wide{ border-radius: 22px; }
+}
 
     /* ===== Image slide card ===== */
     .img-wrap{
@@ -710,9 +777,9 @@ It was simple… but it felt special.`,
     },
 
     // 15 Hangout photos placeholder
-    {
-  type:"gallery",
-  title:"Dating & Hangout ✨",
+  {
+  type:"collage",
+  title:"We still dated & hangout ✨",
   subline:"",
   images:[
     "hangout.jpg",
@@ -721,8 +788,9 @@ It was simple… but it felt special.`,
     "hangout3.jpg",
     "hangout4.jpg"
   ],
-  hint:"Swipe arrows →"
+  hint:"Next →"
 },
+
 
     // 16 Say yes quote
     {
@@ -944,6 +1012,24 @@ if (slide.type === "storyq"){
       <div class="storyq-question">
         <div class="q">❓ ${SQ.question}</div>
         <div class="hintpill">Tap Next →</div>
+      </div>
+    </div>
+  `;
+  return;
+}
+if (slide.type === "collage"){
+  const imgs = slide.images || [];
+  storyEl.innerHTML = `
+    <div class="collage">
+      <div class="collage-left">
+        <img src="${imgs[0] || ""}" onerror="this.style.opacity=.25">
+      </div>
+
+      <div class="collage-right">
+        <div class="collage-tile"><img src="${imgs[1] || ""}" onerror="this.style.opacity=.25"></div>
+        <div class="collage-tile"><img src="${imgs[2] || ""}" onerror="this.style.opacity=.25"></div>
+        <div class="collage-tile"><img src="${imgs[3] || ""}" onerror="this.style.opacity=.25"></div>
+        <div class="collage-tile collage-wide"><img src="${imgs[4] || ""}" onerror="this.style.opacity=.25"></div>
       </div>
     </div>
   `;
