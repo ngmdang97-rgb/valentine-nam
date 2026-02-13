@@ -444,6 +444,38 @@
       font-size: 16px;
       opacity: .8;
     }
+/* ===== Hangout Gallery ===== */
+.gallery-wrap{
+  width: min(1030px, 98%);
+  margin: 14px auto 0;
+  background: rgba(255,255,255,.90);
+  border-radius: 26px;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+  padding: 18px;
+  text-align:center;
+}
+
+.gallery-img{
+  width:100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 12px 24px rgba(0,0,0,.12);
+}
+
+.gallery-nav{
+  margin-top: 12px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+}
+
+.gallery-nav button{
+  padding:10px 16px;
+  font-size:18px;
+  border-radius:14px;
+}
 
     /* ===== Image slide card ===== */
     .img-wrap{
@@ -679,12 +711,18 @@ It was simple… but it felt special.`,
 
     // 15 Hangout photos placeholder
     {
-      type:"image",
-      title:"We still dated & hangout ✨",
-      subline:"",
-      image:{ src:"hangout.jpg", capTitle:"Dating & hangout", capText:"Insert some pictures here later 💗" },
-      hint:"Next →"
-    },
+  type:"gallery",
+  title:"Dating & Hangout ✨",
+  subline:"",
+  images:[
+    "hangout.jpg",
+    "hangout1.jpg",
+    "hangout2.jpg",
+    "hangout3.jpg",
+    "hangout4.jpg"
+  ],
+  hint:"Swipe arrows →"
+},
 
     // 16 Say yes quote
     {
@@ -799,6 +837,33 @@ It was simple… but it felt special.`,
   function renderSlide(slide){
     storyEl.innerHTML = "";
     storyEl.style.whiteSpace = "normal";
+if (slide.type === "gallery"){
+  const imgs = slide.images;
+  if (!slide._index) slide._index = 0;
+
+  storyEl.innerHTML = `
+    <div class="gallery-wrap">
+      <img class="gallery-img" src="${imgs[slide._index]}" onerror="this.style.opacity=.3">
+      <div class="gallery-nav">
+        <button id="gPrev">◀</button>
+        <button id="gNext">▶</button>
+      </div>
+    </div>
+  `;
+
+  setTimeout(()=>{
+    document.getElementById("gPrev").onclick = ()=>{
+      slide._index = (slide._index - 1 + imgs.length) % imgs.length;
+      render();
+    };
+    document.getElementById("gNext").onclick = ()=>{
+      slide._index = (slide._index + 1) % imgs.length;
+      render();
+    };
+  },0);
+
+  return;
+}
 
     if (slide.type === "linkedin"){
       const L = slide.linkedIn;
