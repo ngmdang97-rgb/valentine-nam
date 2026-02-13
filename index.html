@@ -41,6 +41,18 @@
 .cover-mode .story{
   margin-top: 0 !important;
   min-height: 0 !important;
+/* Hide footer by default (dots + —Dang) */
+.dots, .from{
+  display: none;
+}
+
+/* Show footer only when panel has this class */
+.show-footer .dots{
+  display: flex;
+}
+.show-footer .from{
+  display: block;
+}
 }
 .cover-mode .dots,
 .cover-mode .from{
