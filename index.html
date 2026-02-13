@@ -17,6 +17,19 @@
       --card: rgba(255,255,255,.72);
       --border: rgba(255, 105, 180, .25);
     }
+    .cover-cat{
+  width: 120px;
+  margin: 0 auto 6px;
+  display: none;
+  animation: catBob 2.2s ease-in-out infinite;
+  filter: drop-shadow(0 12px 20px rgba(0,0,0,.15));
+}
+
+@keyframes catBob{
+  0%,100%{ transform: translateY(0) }
+  50%{ transform: translateY(-8px) }
+}
+
     /* Cover layout */
 .cover-mode{
   justify-content: center !important;
@@ -396,6 +409,7 @@
   <div class="burst" id="burst"></div>
 
   <main class="panel">
+    <img id="coverCat" src="cat.gif" class="cover-cat" />
     <h1 id="title">Our Story 💞</h1>
     <div class="subline" id="subline"></div>
 
@@ -834,11 +848,16 @@ sublineEl.textContent = s.subline || "";
 hintEl.textContent = s.hint || "";
 // Cover: center layout + move button just under title
 const panelEl = document.querySelector(".panel");
+const catEl = document.getElementById("coverCat");
+
 if (s.type === "cover") {
   panelEl.classList.add("cover-mode");
+  catEl.style.display = "block";
 } else {
   panelEl.classList.remove("cover-mode");
+  catEl.style.display = "none";
 }
+
 
 // Hide dots + from line on cover, show on other slides
 const fromLineEl = document.getElementById("fromLine");
