@@ -24,6 +24,13 @@
   animation: catBob 2.2s ease-in-out infinite;
   filter: drop-shadow(0 12px 20px rgba(0,0,0,.15));
 }
+/* Cover = no panel box */
+.no-panel{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
 
 @keyframes catBob{
   0%,100%{ transform: translateY(0) }
@@ -897,10 +904,10 @@ if (s.showFooter === true) {
 }
 if (s.type === "cover") {
   panelEl.classList.add("cover-mode");
-  catEl.style.display = "block";
+  panelEl.classList.add("no-panel");
 } else {
   panelEl.classList.remove("cover-mode");
-  catEl.style.display = "none";
+  panelEl.classList.remove("no-panel");
 }
 
 
