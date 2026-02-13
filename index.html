@@ -809,11 +809,22 @@ Do you know what is my thought for our first dating?`,
   function render(){
     const s = slides[step];
 
-    titleEl.textContent = s.title || "";
-    sublineEl.textContent = s.subline || "";
-    hintEl.textContent = s.hint || "";
-    renderDots();
-    renderSlide(s);
+titleEl.textContent = s.title || "";
+sublineEl.textContent = s.subline || "";
+hintEl.textContent = s.hint || "";
+
+// Hide dots + from line on cover, show on other slides
+const fromLineEl = document.getElementById("fromLine");
+if (s.type === "cover") {
+  dotsEl.style.display = "none";
+  fromLineEl.style.display = "none";
+} else {
+  dotsEl.style.display = "flex";
+  fromLineEl.style.display = "block";
+}
+
+renderDots();
+renderSlide(s);
 
     // buttons
     actionsEl.innerHTML = "";
