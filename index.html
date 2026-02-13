@@ -415,6 +415,13 @@
 
   // Your 20 pages (slides)
   const slides = [
+    {
+  type: "cover",
+  title: "Đăng & Nam Story 💕",
+  subline: "A little journey from LinkedIn → Tinder → Us 💞",
+  story: "",
+  hint: "Tap Start 💗"
+},
     // 1
     {
       type: "linkedin",
@@ -905,7 +912,19 @@ Do you know what is my thought for our first dating?`,
       actionsEl.appendChild(submit);
       return;
     }
-
+// COVER slide: only show Start button
+if (s.type === "cover") {
+  const start = document.createElement("button");
+  start.className = "next";
+  start.textContent = "Start 💗";
+  start.onclick = () => {
+    step = Math.min(slides.length - 1, step + 1);
+    popBurst(window.innerWidth/2, window.innerHeight/2);
+    render();
+  };
+  actionsEl.appendChild(start);
+  return;
+}
     // Normal slide: Back + Next
     const next = document.createElement("button");
     next.className = "next";
