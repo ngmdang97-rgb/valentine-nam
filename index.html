@@ -32,6 +32,21 @@
       overflow:hidden;
       color:var(--text);
     }
+/* ===== Center text slides vertically ===== */
+.panel.text-mode{
+  justify-content: center;
+}
+
+.panel.text-mode .story{
+  font-size: clamp(26px, 3.2vw, 34px);  /* bigger text */
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.panel.text-mode .actions{
+  margin-top: 24px;
+}
 
     /* Background floating hearts */
     .bg-hearts{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;}
@@ -491,7 +506,7 @@
       },
 
     // 3
-    { type:"text", title:"But… 😔", subline:"", story:"Our conversation last 6 days only 😔", hint:"Next →" },
+    { type:"text",mode:"text", title:"But… 😔", subline:"", story:"Our conversation last 6 days only 😔", hint:"Next →" },
 
     // 4
     { type:"text", title:"Suddenly…", subline:"", story:"On 06 October 2025 😆", hint:"Next →" },
