@@ -813,14 +813,21 @@ Do you know what is my thought for our first dating?`,
     sublineEl.textContent = s.subline || "";
     hintEl.textContent = s.hint || "";
 
-    // Cover mode + cat only on slide 1
-    if (s.type === "cover") {
-      panelEl.classList.add("cover-mode");
-      coverCatEl.style.display = "block";
-    } else {
-      panelEl.classList.remove("cover-mode");
-      coverCatEl.style.display = "none";
-    }
+   // Reset modes every time
+panelEl.classList.remove("cover-mode", "text-mode");
+
+// Cover mode + cat only on slide 1
+if (s.type === "cover") {
+  panelEl.classList.add("cover-mode");
+  coverCatEl.style.display = "block";
+} else {
+  coverCatEl.style.display = "none";
+}
+
+// Text mode (vertical center) for slides with mode:"text"
+if (s.mode === "text") {
+  panelEl.classList.add("text-mode");
+}
 
     // ✅ Footer ONLY when showFooter true (Slide 2 only)
     if (s.showFooter === true) panelEl.classList.add("show-footer");
