@@ -137,6 +137,84 @@
       padding: 0 10px;
       white-space: pre-line;
     }
+/* ===== Story Question Card (for First date slide) ===== */
+.storyq-wrap{
+  width: min(980px, 98%);
+  margin: 14px auto 0;
+  text-align:left;
+  background: rgba(255,255,255,.90);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 26px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+  padding: 22px 22px 18px;
+}
+
+.storyq-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,46,122,.10);
+  border: 1px solid rgba(255,46,122,.18);
+  color:#b4003d;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.storyq-title{
+  margin: 14px 0 6px;
+  font-size: 24px;
+  font-weight: 900;
+  color:#111827;
+  letter-spacing: -.2px;
+}
+
+.storyq-meta{
+  margin: 0 0 14px;
+  color:#6b7280;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.storyq-box{
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 20px;
+  padding: 16px 16px;
+  line-height: 1.6;
+  font-size: 19px;
+  color:#111827;
+  box-shadow: 0 12px 26px rgba(0,0,0,.08);
+  white-space: pre-line;
+}
+
+.storyq-question{
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(0,0,0,.10);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.storyq-question .q{
+  font-size: 18px;
+  font-weight: 900;
+  color:#b4003d;
+}
+
+.storyq-question .hintpill{
+  font-size: 14px;
+  font-weight: 800;
+  color:#374151;
+  background: rgba(31,41,55,.06);
+  border: 1px solid rgba(31,41,55,.10);
+  padding: 8px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
 
     /* ✅ FOOTER: hidden by default; show ONLY when .panel has .show-footer */
     .dots, .from{ display:none !important; }
@@ -546,19 +624,24 @@
 
     // 9 First date long story
     {
-      type:"text",
-      title:"First date 💚",
-      subline:"13 Oct 2025",
-      story:
-`We met first time on 13/10/2025, here is our first dating:
+  type:"storyq",
+  title:"First date 💚",
+  subline:"13 Oct 2025",
+  storyq:{
+    title:"Our first date",
+    meta:"13/10/2025 • 6:30 PM • The Hallmark → D4 Sushi House → drove around",
+    body:
+`I bought you a cup of matcha latte and picked you up around 6:30 PM at the Hallmark.
+Unfortunately, it started to rain ☔️, so we took a taxi to a Sushi House in District 4.
 
-With matcha latte in hand, I pick you up around 6:30 PM at the Hallmark,
-but unfortunately, it was rainy, so we have to take the taxi to go to sushi house in D4,
-then back to the Hallmark to take the bike and drove around.
+After that, we went back to the Hallmark, grabbed the bike, and rode around the city for a while.
 
-Do you know what is my thought for our first dating?`,
-      hint:"Next →"
-    },
+It was simple… but it felt special.`,
+    question:"Do you know what I was thinking during our first date?"
+  },
+  hint:"Next →"
+},
+
 
     // 10 Thought
     { type:"text", title:"My thought 💭", subline:"", story:"Why does this person make me smile so easily? 😊", hint:"Next →" },
@@ -787,6 +870,25 @@ Do you know what is my thought for our first dating?`,
       `;
       return;
     }
+if (slide.type === "storyq"){
+  const SQ = slide.storyq;
+  storyEl.innerHTML = `
+    <div class="storyq-wrap">
+      <div class="storyq-tag">💚 First date story</div>
+
+      <div class="storyq-title">${SQ.title}</div>
+      <div class="storyq-meta">${SQ.meta}</div>
+
+      <div class="storyq-box">${SQ.body.replaceAll("\\n","<br>")}</div>
+
+      <div class="storyq-question">
+        <div class="q">❓ ${SQ.question}</div>
+        <div class="hintpill">Tap Next →</div>
+      </div>
+    </div>
+  `;
+  return;
+}
 
     if (slide.type === "image"){
       const I = slide.image;
