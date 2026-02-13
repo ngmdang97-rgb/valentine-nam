@@ -460,6 +460,7 @@
     {
       type: "linkedin",
       title: "Where our story begin 💗",
+      showFooter: true,
       subline: "",
       linkedIn: {
         date: "SEP 4, 2025",
@@ -861,13 +862,15 @@ if (s.type === "cover") {
 
 // Hide dots + from line on cover, show on other slides
 const fromLineEl = document.getElementById("fromLine");
-if (s.type === "cover") {
-  dotsEl.style.display = "none";
-  fromLineEl.style.display = "none";
-} else {
+// Dots + —Dang only when slide.showFooter === true
+if (s.showFooter === true) {
   dotsEl.style.display = "flex";
   fromLineEl.style.display = "block";
+} else {
+  dotsEl.style.display = "none";
+  fromLineEl.style.display = "none";
 }
+
 
 renderDots();
 renderSlide(s);
