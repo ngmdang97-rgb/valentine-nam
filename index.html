@@ -32,21 +32,24 @@
       overflow:hidden;
       color:var(--text);
     }
-/* ===== Center text slides vertically ===== */
+/* ===== TEXT SLIDE VERTICAL CENTER ===== */
 .panel.text-mode{
-  justify-content: center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center !important;
 }
 
 .panel.text-mode .story{
-  font-size: clamp(26px, 3.2vw, 34px);  /* bigger text */
+  font-size: clamp(28px, 3.5vw, 38px);
   max-width: 900px;
-  margin: 0 auto;
+  margin: 10px auto 0;
   line-height: 1.6;
 }
 
 .panel.text-mode .actions{
-  margin-top: 24px;
+  margin-top: 18px;
 }
+
 
     /* Background floating hearts */
     .bg-hearts{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;}
