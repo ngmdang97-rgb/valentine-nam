@@ -2,116 +2,410 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Valentine 💖</title>
+<title>Our Story 💖</title>
 
 <style>
-body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  background: linear-gradient(135deg,#ffc1d6,#ffe4ec);
-  overflow:hidden;
-}
+  :root{
+    --pink1:#ffc1d6;
+    --pink2:#ffe4ec;
+    --pink3:#fff6f9;
+    --hot:#ff2e7a;
+    --text:#1f2937;
+    --shadow:0 18px 60px rgba(0,0,0,.18);
+  }
 
-/* Title */
-h1{
-  color:#ff2e7a;
-  font-size:48px;
-  text-align:center;
-  margin-bottom:10px;
-}
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    background: radial-gradient(900px 650px at 20% 20%, var(--pink1), transparent 60%),
+                radial-gradient(900px 650px at 80% 80%, #ffb0cc, transparent 60%),
+                linear-gradient(135deg, var(--pink2), var(--pink3));
+    overflow:hidden;
+    color:var(--text);
+  }
 
-/* Emoji character */
-.emoji{
-  font-size:90px;
-  animation: bounce 2s infinite;
-}
-@keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
+  /* Background floating hearts */
+  .bg-hearts{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;}
+  .bg-heart{
+    position:absolute; bottom:-40px; opacity:.9;
+    filter: drop-shadow(0 8px 10px rgba(0,0,0,.08));
+    animation: floatUp linear forwards;
+    will-change: transform, opacity;
+  }
+  @keyframes floatUp{
+    0%{ transform:translateY(0) translateX(0) scale(.9); opacity:0}
+    10%{ opacity:.95}
+    100%{ transform:translateY(-120vh) translateX(var(--drift)) scale(1.25); opacity:0}
+  }
 
-/* Buttons */
-button{
-  padding:14px 26px;
-  font-size:20px;
-  border:none;
-  border-radius:16px;
-  margin:10px;
-  cursor:pointer;
-  font-weight:bold;
-  box-shadow:0 8px 20px rgba(0,0,0,0.2);
-}
+  /* Main card */
+  .panel{
+    width:min(980px, 92vw);
+    min-height:min(640px, 78vh);
+    border-radius:34px;
+    background: rgba(255,255,255,.70);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 105, 180, .25);
+    padding: clamp(18px, 4vw, 44px);
+    text-align:center;
+    position:relative;
+    z-index:2;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:12px;
+  }
 
-.yes{ background:#4CAF50; color:white; }
-.no{ background:#f44336; color:white; }
+  .panel::before{
+    content:"";
+    position:absolute; inset:-70px;
+    background:
+      radial-gradient(520px 320px at 30% 20%, rgba(255,105,180,.20), transparent 70%),
+      radial-gradient(520px 320px at 70% 80%, rgba(255,155,195,.20), transparent 70%);
+    transform: rotate(7deg);
+    z-index:-1;
+  }
 
-/* Floating hearts */
-.heart{
-  position:absolute;
-  bottom:-30px;
-  font-size:24px;
-  animation: float 6s linear infinite;
-}
-@keyframes float{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(-110vh)}
-}
+  /* Title */
+  h1{
+    margin:0;
+    color:var(--hot);
+    font-size: clamp(28px, 4vw, 56px);
+    letter-spacing:-.6px;
+    line-height:1.05;
+    text-shadow: 0 10px 30px rgba(255,46,122,.15);
+  }
 
+  /* Character */
+  .character{
+    width:min(220px, 52vw);
+    margin: 10px auto 0;
+    user-select:none;
+  }
+  .character img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    animation:bob 2.6s ease-in-out infinite;
+    filter: drop-shadow(0 18px 25px rgba(0,0,0,.12));
+    cursor:pointer;
+  }
+  @keyframes bob{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+  /* Story text */
+  .story{
+    margin: 6px auto 0;
+    max-width: 720px;
+    font-size: clamp(15px, 1.6vw, 20px);
+    line-height:1.55;
+    white-space: pre-line;
+    padding: 0 8px;
+  }
+
+  /* Progress dots */
+  .dots{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    margin-top: 2px;
+  }
+  .dot{
+    width:10px; height:10px; border-radius:999px;
+    background: rgba(255,46,122,.22);
+  }
+  .dot.active{ background: rgba(255,46,122,.95); transform: scale(1.15); }
+
+  /* Buttons */
+  .actions{
+    margin-top: 10px;
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  button{
+    border:none;
+    cursor:pointer;
+    padding: 14px 26px;
+    border-radius: 16px;
+    font-weight: 900;
+    font-size: 18px;
+    box-shadow: 0 12px 26px rgba(0,0,0,.12);
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    user-select:none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:active{ transform: scale(.98) }
+
+  .next{ background: linear-gradient(135deg, #ff6aa2, #ff2e7a); color:white; }
+  .back{ background: rgba(31,41,55,.08); color:#111827; border:1px solid rgba(31,41,55,.12); }
+  .yes{ background: linear-gradient(135deg, #2ecc71, #27ae60); color:white; }
+  .no{ background: linear-gradient(135deg, #ff4d4d, #d63031); color:white; position:relative; }
+
+  .from{ margin-top: 2px; font-weight: 900; color:#b4003d; }
+  .hint{ margin-top: 6px; font-size: 13px; opacity:.75; }
+
+  /* Heart burst */
+  .burst{ position:fixed; inset:0; pointer-events:none; z-index:5; }
+  .pop{
+    position:absolute; font-size: 22px;
+    animation: pop 850ms ease-out forwards;
+    filter: drop-shadow(0 10px 16px rgba(0,0,0,.12));
+  }
+  @keyframes pop{
+    0%{ transform: translate(-50%,-50%) scale(.6); opacity: 0 }
+    15%{ opacity: 1 }
+    100%{ transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.15); opacity: 0 }
+  }
+
+  @media (max-width:520px){
+    .panel{ min-height: 76vh; }
+    button{ width:min(240px, 84vw); }
+  }
 </style>
 </head>
 
 <body>
+  <div class="bg-hearts" id="bgHearts"></div>
+  <div class="burst" id="burst"></div>
 
-<h1>Will you be my Valentine? 💕</h1>
-<div class="emoji">🐱</div>
+  <main class="panel">
+    <h1 id="title">Our Story 💞</h1>
 
-<div>
-  <button class="yes" id="yes">Yes 💚</button>
-  <button class="no" id="no">No 😢</button>
-</div>
+    <div class="character" title="Tap me 💖">
+      <!-- Keep your current character file name here -->
+      <img id="charImg" src="cat.gif" alt="cute character" onerror="this.src='cat.png'">
+    </div>
+
+    <div class="story" id="story"></div>
+
+    <div class="dots" id="dots"></div>
+
+    <div class="from" id="fromLine">— Dang</div>
+
+    <div class="actions" id="actions"></div>
+
+    <div class="hint" id="hint"></div>
+  </main>
 
 <script>
-// Floating hearts
-function spawnHeart(){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerText="💖";
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=(16+Math.random()*20)+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-}
-setInterval(spawnHeart,400);
+  // ========= CUSTOMIZE YOUR STORY HERE =========
+  // Replace the text inside these slides with your real story.
+  // Tip: keep each slide 1–3 short lines (more emotional).
+  const slides = [
+    {
+      title: "Hi Nam 💗",
+      story:
+`Before I ask you something…
+I want to take you back to the beginning.`,
+      hint: "Tap the character for a surprise line 😉"
+    },
+    {
+      title: "The day we met ✨",
+      story:
+`I still remember the moment we met.
+It felt simple… but somehow special.`,
+      hint: "Next →"
+    },
+    {
+      title: "My first thought 💭",
+      story:
+`I thought:
+“Why does this person make me smile so easily?”`,
+      hint: "Next →"
+    },
+    {
+      title: "A favorite memory 🌸",
+      story:
+`One memory I keep replaying is:
+[write your memory here]`,
+      hint: "You can edit this line in the code."
+    },
+    {
+      title: "Thank you 💌",
+      story:
+`Thank you for your patience,
+your kindness,
+and for being you.`,
+      hint: "Almost there…"
+    },
+    // FINAL QUESTION SCREEN
+    {
+      final: true,
+      title: "Will you be my Valentine? 💞",
+      story:
+`You make every day feel like sunshine since the day we met
+Will you be my Valentine?`,
+      hint: "Tip: try to press “No”… if you can 😄"
+    }
+  ];
 
-// No button run away
-const no=document.getElementById("no");
-const yes=document.getElementById("yes");
-let scale=1;
+  // Optional hidden “tap character” lines
+  const secretLines = [
+    "I’m smiling while writing this 😳",
+    "You’re my favorite person, Nam 💗",
+    "If you’re reading this… I miss you 🥺"
+  ];
 
-function moveNo(){
-  const x=Math.random()*80+"vw";
-  const y=Math.random()*80+"vh";
-  no.style.position="absolute";
-  no.style.left=x;
-  no.style.top=y;
+  // ========= UI LOGIC =========
+  const bg = document.getElementById("bgHearts");
+  const burst = document.getElementById("burst");
+  const titleEl = document.getElementById("title");
+  const storyEl = document.getElementById("story");
+  const dotsEl = document.getElementById("dots");
+  const actionsEl = document.getElementById("actions");
+  const hintEl = document.getElementById("hint");
+  const charImg = document.getElementById("charImg");
 
-  scale+=0.1;
-  yes.style.transform="scale("+scale+")";
-}
+  let step = 0;
+  let yesScale = 1;
 
-no.onmouseover=moveNo;
-no.onclick=moveNo;
+  // floating hearts
+  const heartChars = ["💗","💖","💘","💕","💞","❤️"];
+  function spawnBgHeart(){
+    const el = document.createElement("div");
+    el.className = "bg-heart";
+    el.textContent = heartChars[Math.floor(Math.random()*heartChars.length)];
+    const left = Math.random()*100;
+    const size = 14 + Math.random()*22;
+    const dur  = 5 + Math.random()*6;
+    const drift = (-50 + Math.random()*100) + "px";
+    el.style.left = left + "vw";
+    el.style.fontSize = size + "px";
+    el.style.setProperty("--drift", drift);
+    el.style.animationDuration = dur + "s";
+    bg.appendChild(el);
+    setTimeout(()=>el.remove(), dur*1000);
+  }
+  setInterval(spawnBgHeart, 280);
 
-// Yes click
-yes.onclick=()=>{
-  document.body.innerHTML="<h1 style='color:#ff2e7a'>I knew you'd say yes 💕</h1>";
-};
+  function popBurst(cx, cy){
+    const emojis = ["💖","💗","💕","💘","💞","❤️"];
+    for(let i=0;i<22;i++){
+      const p = document.createElement("div");
+      p.className = "pop";
+      p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      p.style.left = cx + "px";
+      p.style.top  = cy + "px";
+      p.style.setProperty("--dx", (-180 + Math.random()*360) + "px");
+      p.style.setProperty("--dy", (-180 + Math.random()*360) + "px");
+      burst.appendChild(p);
+      setTimeout(()=>p.remove(), 900);
+    }
+  }
+
+  function renderDots(){
+    dotsEl.innerHTML = "";
+    slides.forEach((_, i)=>{
+      const d = document.createElement("div");
+      d.className = "dot" + (i===step ? " active" : "");
+      dotsEl.appendChild(d);
+    });
+  }
+
+  function render(){
+    const s = slides[step];
+    titleEl.textContent = s.title;
+    storyEl.textContent = s.story;
+    hintEl.textContent = s.hint || "";
+    renderDots();
+
+    actionsEl.innerHTML = "";
+
+    if (!s.final){
+      const back = document.createElement("button");
+      back.className = "back";
+      back.textContent = "Back";
+      back.disabled = (step===0);
+      back.style.opacity = step===0 ? 0.5 : 1;
+      back.onclick = ()=>{
+        step = Math.max(0, step-1);
+        popBurst(window.innerWidth/2, window.innerHeight/2);
+        render();
+      };
+
+      const next = document.createElement("button");
+      next.className = "next";
+      next.textContent = (step === slides.length-2) ? "Next 💞" : "Next";
+      next.onclick = ()=>{
+        step = Math.min(slides.length-1, step+1);
+        popBurst(window.innerWidth/2, window.innerHeight/2);
+        render();
+      };
+
+      actionsEl.appendChild(back);
+      actionsEl.appendChild(next);
+      return;
+    }
+
+    // FINAL screen: Yes / No
+    const yes = document.createElement("button");
+    yes.className = "yes";
+    yes.id = "btnYes";
+    yes.textContent = "Yes 💚";
+
+    const no = document.createElement("button");
+    no.className = "no";
+    no.id = "btnNo";
+    no.textContent = "No 😢";
+
+    actionsEl.appendChild(yes);
+    actionsEl.appendChild(no);
+
+    // No button runs away + Yes grows
+    function moveNo(){
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const rect = no.getBoundingClientRect();
+      const pad = 12;
+
+      const x = pad + Math.random()*(vw - rect.width - pad*2);
+      const y = pad + Math.random()*(vh - rect.height - pad*2);
+
+      no.style.position = "fixed";
+      no.style.left = x + "px";
+      no.style.top  = y + "px";
+      no.style.zIndex = 9999;
+
+      yesScale = Math.min(1.75, yesScale + 0.09);
+      yes.style.transform = `scale(${yesScale})`;
+      yes.style.boxShadow = "0 18px 40px rgba(46, 204, 113, .35)";
+    }
+
+    no.addEventListener("mouseenter", moveNo);
+    no.addEventListener("touchstart", (e)=>{ e.preventDefault(); moveNo(); }, {passive:false});
+    no.addEventListener("click", (e)=>{ e.preventDefault(); moveNo(); });
+
+    // YES: show final love message (still on same page)
+    yes.addEventListener("click", (e)=>{
+      const x = e.clientX || (window.innerWidth/2);
+      const y = e.clientY || (window.innerHeight/2);
+      popBurst(x,y);
+      titleEl.textContent = "I knew you’d say yes — I love you 💕";
+      storyEl.textContent = "Happy Valentine’s Day, Nam ❤️\nLet’s make more memories together.";
+      hintEl.textContent = "";
+      actionsEl.innerHTML = "";
+      dotsEl.innerHTML = "";
+      // extra hearts
+      for(let i=0;i<30;i++) setTimeout(spawnBgHeart, i*40);
+    });
+  }
+
+  // Secret line when tapping character
+  charImg.addEventListener("click", ()=>{
+    const line = secretLines[Math.floor(Math.random()*secretLines.length)];
+    popBurst(window.innerWidth/2, window.innerHeight/2);
+    hintEl.textContent = line;
+  });
+
+  render();
 </script>
-
 </body>
 </html>
