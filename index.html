@@ -749,7 +749,7 @@ It was simple… but it felt special.`,
 
     // 14 Improved Vietnamese line
     {
-      type:"text",
+      type:"sad",
        mode:"text",
       title:"So sad… 😔",
       subline:"",
@@ -1007,7 +1007,19 @@ if (slide.type === "collage"){
   `;
   return;
 }
-
+if (slide.type === "sad"){
+  storyEl.innerHTML = `
+    <div style="text-align:center">
+      <img src="rejected.GIF"
+           style="max-width:220px; width:70%; margin-bottom:12px;
+                  border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.18);">
+      <div style="font-size:22px; line-height:1.6; white-space:pre-line;">
+        ${slide.story}
+      </div>
+    </div>
+  `;
+  return;
+}
     if (slide.type === "image"){
       const I = slide.image;
       storyEl.innerHTML = `
