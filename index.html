@@ -710,6 +710,19 @@ It was simple… but it felt special.`,
       image:{ src:"phanthiet.jpg", capTitle:"Phan Thiet", capText:"Hehee, we go to Phan Thiet and playing surfing" },
       hint:"Next →"
     },
+    
+    // NEW: Video slide - And we play
+{
+  type:"video",
+  mode:"text",
+  title:"And we play 🏄‍♂️",
+  subline:"",
+  video:{
+    src:"Clip.MOV",
+    note:"Tap play if it doesn’t auto-play 💗"
+  },
+  hint:"Next →"
+},
   {
       type:"image",
       title:"And Today 🌲 ",
@@ -1058,7 +1071,25 @@ It was simple… but it felt special.`,
       `;
       return;
     }
-
+if (slide.type === "video"){
+  const V = slide.video || {};
+  storyEl.innerHTML = `
+    <div class="img-wrap">
+      <video
+        src="${V.src}"
+        playsinline
+        controls
+        preload="metadata"
+        style="width:100%; max-height:504px; border-radius:26px; background:rgba(0,0,0,.06); display:block;"
+      ></video>
+      <div class="img-cap">
+        <div class="cap-title">${slide.title || ""}</div>
+        <div class="cap-text">${V.note || ""}</div>
+      </div>
+    </div>
+  `;
+  return;
+}
     storyEl.textContent = slide.story || "";
     storyEl.style.whiteSpace = "pre-line";
   }
