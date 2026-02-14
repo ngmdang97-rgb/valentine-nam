@@ -1000,16 +1000,9 @@ if (slide.type === "collage"){
   const imgs = slide.images || [];
   storyEl.innerHTML = `
     <div class="collage">
-      <div class="collage-left">
-        <img src="${imgs[0] || ""}" onerror="this.style.opacity=.25">
-      </div>
-
-      <div class="collage-right">
-        <div class="collage-tile"><img src="${imgs[1] || ""}" onerror="this.style.opacity=.25"></div>
-        <div class="collage-tile"><img src="${imgs[2] || ""}" onerror="this.style.opacity=.25"></div>
-        <div class="collage-tile"><img src="${imgs[3] || ""}" onerror="this.style.opacity=.25"></div>
-        <div class="collage-tile collage-wide"><img src="${imgs[4] || ""}" onerror="this.style.opacity=.25"></div>
-      </div>
+      <div class="collage-tile"><img src="${imgs[0] || ""}" onerror="this.style.opacity=.25"></div>
+      <div class="collage-tile"><img src="${imgs[1] || ""}" onerror="this.style.opacity=.25"></div>
+      <div class="collage-tile"><img src="${imgs[2] || ""}" onerror="this.style.opacity=.25"></div>
     </div>
   `;
   return;
