@@ -478,13 +478,14 @@
   font-size:18px;
   border-radius:14px;
 }
-/* ===== Hangout Vertical 3 Photos ===== */
+/* ===== Hangout 3 Columns ===== */
 .collage{
-  width: min(680px, 96%);
+  width: min(1030px, 98%);
   margin: 14px auto 0;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
+  align-items: stretch;
 }
 
 .collage-left,
@@ -502,19 +503,21 @@
 
 .collage-tile img{
   width:100%;
-  height: 240px;
+  height: 220px;
   object-fit: cover;
   display:block;
 }
 
+
 /* Mobile */
-@media (max-width: 640px){
+@media (max-width: 820px){
   .collage{
     width: 92%;
+    grid-template-columns: 1fr;
     gap: 14px;
   }
   .collage-tile img{
-    height: 200px;
+    height: 220px;
   }
 }
 
