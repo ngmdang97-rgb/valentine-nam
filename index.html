@@ -963,6 +963,10 @@ if (slide.type === "gallery"){
 
   return;
 }
+if (slide.type === "html"){
+  storyEl.innerHTML = slide.story || "";
+  return;
+}
 
     if (slide.type === "linkedin"){
       const L = slide.linkedIn;
