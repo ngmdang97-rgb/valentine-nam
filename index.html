@@ -746,7 +746,7 @@ It was simple… but it felt special.`,
       hint:"Next →"
     },
 
-    // 14 Improved Vietnamese line
+    // 14 Sad
     {
       type:"sad",
        mode:"text",
@@ -865,7 +865,7 @@ It was simple… but it felt special.`,
 
     // 22 Final
     {
-      type:"final",
+      type:"please",
       mode:"text",
       title:"Will you be my Valentine? 💞",
       subline:"",
@@ -1074,6 +1074,20 @@ if (slide.type === "opps"){
   storyEl.innerHTML = `
     <div style="text-align:center">
       <img src="opps.GIF"
+           style="max-width:220px; width:70%; margin-bottom:12px;
+                  border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.18);">
+      <div style="font-size:22px; line-height:1.6; white-space:pre-line;">
+        ${slide.story}
+      </div>
+    </div>
+  `;
+  return;
+
+  }
+if (slide.type === "please"){
+  storyEl.innerHTML = `
+    <div style="text-align:center">
+      <img src="please.GIF"
            style="max-width:220px; width:70%; margin-bottom:12px;
                   border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.18);">
       <div style="font-size:22px; line-height:1.6; white-space:pre-line;">
