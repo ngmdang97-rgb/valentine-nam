@@ -32,25 +32,22 @@
       overflow:hidden;
       color:var(--text);
     }
-    
-/* ===== TEXT SLIDE VERTICAL CENTER ===== */
-.panel.text-mode{
-  display:flex;
-  flex-direction:column;
-  justify-content:center !important;
-}
 
-.panel.text-mode .story{
-  font-size: clamp(28px, 3.5vw, 38px);
-  max-width: 900px;
-  margin: 10px auto 0;
-  line-height: 1.6;
-}
-
-.panel.text-mode .actions{
-  margin-top: 18px;
-}
-
+    /* ===== TEXT SLIDE VERTICAL CENTER ===== */
+    .panel.text-mode{
+      display:flex;
+      flex-direction:column;
+      justify-content:center !important;
+    }
+    .panel.text-mode .story{
+      font-size: clamp(28px, 3.5vw, 38px);
+      max-width: 900px;
+      margin: 10px auto 0;
+      line-height: 1.6;
+    }
+    .panel.text-mode .actions{
+      margin-top: 18px;
+    }
 
     /* Background floating hearts */
     .bg-hearts{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;}
@@ -138,84 +135,78 @@
       padding: 0 10px;
       white-space: pre-line;
     }
-/* ===== Story Question Card (for First date slide) ===== */
-.storyq-wrap{
-  width: min(980px, 98%);
-  margin: 14px auto 0;
-  text-align:left;
-  background: rgba(255,255,255,.90);
-  border: 1px solid rgba(0,0,0,.08);
-  border-radius: 26px;
-  box-shadow: 0 16px 40px rgba(0,0,0,.12);
-  padding: 22px 22px 18px;
-}
 
-.storyq-tag{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(255,46,122,.10);
-  border: 1px solid rgba(255,46,122,.18);
-  color:#b4003d;
-  font-weight: 900;
-  font-size: 18px;
-}
-
-.storyq-title{
-  margin: 14px 0 6px;
-  font-size: 24px;
-  font-weight: 900;
-  color:#111827;
-  letter-spacing: -.2px;
-}
-
-.storyq-meta{
-  margin: 0 0 14px;
-  color:#6b7280;
-  font-weight: 700;
-  font-size: 16px;
-}
-
-.storyq-box{
-  background: rgba(255,255,255,.95);
-  border: 1px solid rgba(0,0,0,.10);
-  border-radius: 20px;
-  padding: 16px 16px;
-  line-height: 1.6;
-  font-size: 19px;
-  color:#111827;
-  box-shadow: 0 12px 26px rgba(0,0,0,.08);
-  white-space: pre-line;
-}
-
-.storyq-question{
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px dashed rgba(0,0,0,.10);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-}
-
-.storyq-question .q{
-  font-size: 18px;
-  font-weight: 900;
-  color:#b4003d;
-}
-
-.storyq-question .hintpill{
-  font-size: 14px;
-  font-weight: 800;
-  color:#374151;
-  background: rgba(31,41,55,.06);
-  border: 1px solid rgba(31,41,55,.10);
-  padding: 8px 12px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
+    /* ===== Story Question Card (for First date slide) ===== */
+    .storyq-wrap{
+      width: min(980px, 98%);
+      margin: 14px auto 0;
+      text-align:left;
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 26px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.12);
+      padding: 22px 22px 18px;
+    }
+    .storyq-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,46,122,.10);
+      border: 1px solid rgba(255,46,122,.18);
+      color:#b4003d;
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .storyq-title{
+      margin: 14px 0 6px;
+      font-size: 24px;
+      font-weight: 900;
+      color:#111827;
+      letter-spacing: -.2px;
+    }
+    .storyq-meta{
+      margin: 0 0 14px;
+      color:#6b7280;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .storyq-box{
+      background: rgba(255,255,255,.95);
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 20px;
+      padding: 16px 16px;
+      line-height: 1.6;
+      font-size: 19px;
+      color:#111827;
+      box-shadow: 0 12px 26px rgba(0,0,0,.08);
+      white-space: pre-line;
+    }
+    .storyq-question{
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(0,0,0,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .storyq-question .q{
+      font-size: 18px;
+      font-weight: 900;
+      color:#b4003d;
+    }
+    .storyq-question .hintpill{
+      font-size: 14px;
+      font-weight: 800;
+      color:#374151;
+      background: rgba(31,41,55,.06);
+      border: 1px solid rgba(31,41,55,.10);
+      padding: 8px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
 
     /* ✅ FOOTER: hidden by default; show ONLY when .panel has .show-footer */
     .dots, .from{ display:none !important; }
@@ -291,81 +282,68 @@
     }
 
     /* ===== LinkedIn message card (+20% bigger) ===== */
-   /* ===== LinkedIn message card (+20% bigger) ===== */
-.linkedin-wrap{
-  width: min(1180px, 98%);            /* was 984px -> +20% */
-  margin: 14px auto 0;
-  text-align: left;
-  background: rgba(255,255,255,.90);
-  border: 1px solid rgba(0,0,0,.08);
-  border-radius: 31px;               /* 26 * 1.2 */
-  box-shadow: 0 22px 52px rgba(0,0,0,.14);
-  overflow: hidden;
-  padding: 26px 23px 23px;           /* 22 * 1.2 */
-}
-
-.linkedin-date{
-  text-align:center;
-  font-size: 17px;                   /* 14 * 1.2 */
-  opacity: .55;
-  margin: 0 0 22px;                  /* 18 * 1.2 */
-  letter-spacing: .6px;
-}
-
-.linkedin-row{
-  display:flex;
-  gap:17px;                          /* 14 * 1.2 */
-  align-items:flex-start;
-}
-
-.linkedin-avatar{
-  width: 66px;                        /* 55 * 1.2 */
-  height: 66px;
-  border-radius: 999px;
-  object-fit: cover;
-  border: 2px solid rgba(255,46,122,.18);
-  flex: 0 0 auto;
-}
-
-.linkedin-sender{
-  font-weight: 900;
-  font-size: 24px;                    /* 20 * 1.2 */
-  margin-top: 2px;
-  margin-bottom: 4px;
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-
-.linkedin-subtitle{
-  font-size: 19px;                    /* 16 * 1.2 */
-  color: #6b7280;
-  margin-top: 0px;
-  margin-bottom: 17px;                /* 14 * 1.2 */
-  line-height: 1.35;
-}
-
-.linkedin-bubble{
-  background: white;
-  border: 1px solid rgba(0,0,0,.08);
-  border-radius: 26px;                /* 22 * 1.2 */
-  padding: 17px 20px;                 /* 14/17 * 1.2 */
-  max-width: 922px;                   /* 768 * 1.2 */
-  box-shadow: 0 14px 32px rgba(0,0,0,.12);
-  white-space: pre-line;
-  font-size: 23px;                    /* 19 * 1.2 */
-  line-height: 1.5;
-}
-
-.linkedin-time{
-  font-size: 17px;                    /* 14 * 1.2 */
-  opacity: .55;
-  margin-top: 14px;                   /* 12 * 1.2 */
+    .linkedin-wrap{
+      width: min(1180px, 98%);
+      margin: 14px auto 0;
+      text-align: left;
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 31px;
+      box-shadow: 0 22px 52px rgba(0,0,0,.14);
+      overflow: hidden;
+      padding: 26px 23px 23px;
+    }
+    .linkedin-date{
+      text-align:center;
+      font-size: 17px;
+      opacity: .55;
+      margin: 0 0 22px;
+      letter-spacing: .6px;
+    }
+    .linkedin-row{
+      display:flex;
+      gap:17px;
+      align-items:flex-start;
+    }
+    .linkedin-avatar{
+      width: 66px;
+      height: 66px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 2px solid rgba(255,46,122,.18);
+      flex: 0 0 auto;
+    }
+    .linkedin-sender{
+      font-weight: 900;
+      font-size: 24px;
+      margin-top: 2px;
+      margin-bottom: 4px;
+      display:flex;
+      align-items:center;
+      gap:7px;
+    }
+    .linkedin-subtitle{
+      font-size: 19px;
+      color: #6b7280;
+      margin-top: 0px;
+      margin-bottom: 17px;
+      line-height: 1.35;
+    }
+    .linkedin-bubble{
+      background: white;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 26px;
+      padding: 17px 20px;
+      max-width: 922px;
+      box-shadow: 0 14px 32px rgba(0,0,0,.12);
+      white-space: pre-line;
+      font-size: 23px;
+      line-height: 1.5;
     }
     .linkedin-time{
-      font-size: 14px;
+      font-size: 17px;
       opacity: .55;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     /* ===== Tinder Match card ===== */
@@ -419,14 +397,14 @@
       background: rgba(255,255,255,.2);
     }
     .match-pin{
-  width: 70px;
-  height: 70px;
-  border-radius: 20px;
-  display:grid;
-  place-items:center;
-  background: white;
-  box-shadow: 0 12px 26px rgba(0,0,0,.22);
-}
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      display:grid;
+      place-items:center;
+      background: white;
+      box-shadow: 0 12px 26px rgba(0,0,0,.22);
+    }
     .match-btn{
       width: min(624px, 94%);
       margin: 12px auto 0;
@@ -446,83 +424,41 @@
       font-size: 16px;
       opacity: .8;
     }
-/* ===== Hangout Gallery ===== */
-.gallery-wrap{
-  width: min(1030px, 98%);
-  margin: 14px auto 0;
-  background: rgba(255,255,255,.90);
-  border-radius: 26px;
-  border: 1px solid rgba(0,0,0,.08);
-  box-shadow: 0 16px 40px rgba(0,0,0,.12);
-  padding: 18px;
-  text-align:center;
-}
 
-.gallery-img{
-  width:100%;
-  max-height: 420px;
-  object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 12px 24px rgba(0,0,0,.12);
-}
+    /* ===== Hangout 3 Columns BIG ===== */
+    .collage{
+      width: min(1180px, 98%);
+      margin: 18px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+    .collage-tile{
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 18px 42px rgba(0,0,0,.18);
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.5);
+    }
+    .collage-tile img{
+      width:100%;
+      height: 300px;
+      object-fit: cover;
+      display:block;
+    }
 
-.gallery-nav{
-  margin-top: 12px;
-  display:flex;
-  justify-content:center;
-  gap:14px;
-}
-
-.gallery-nav button{
-  padding:10px 16px;
-  font-size:18px;
-  border-radius:14px;
-}
-/* ===== Hangout 3 Columns BIG ===== */
-.collage{
-  width: min(1180px, 98%);
-  margin: 18px auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  align-items: stretch;
-}
-
-.collage-tile{
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 18px 42px rgba(0,0,0,.18);
-  border: 1px solid rgba(0,0,0,.08);
-  background: rgba(255,255,255,.5);
-}
-
-.collage-tile img{
-  width:100%;
-  height: 300px;   /* BIGGER */
-  object-fit: cover;
-  display:block;
-}
-
-
-/* Mobile */
-@media (max-width: 820px){
-  .collage{
-    width: 94%;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .collage-tile img{
-    height: 260px;
-  }
-}
-
-/* Mobile: stack nicely */
-@media (max-width: 820px){
-  .collage{ grid-template-columns: 1fr; }
-  .collage-left img{ min-height: 320px; }
-  .collage-right{ grid-template-columns: 1fr 1fr; }
-  .collage-wide{ border-radius: 22px; }
-}
+    /* Mobile */
+    @media (max-width: 820px){
+      .collage{
+        width: 94%;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .collage-tile img{
+        height: 260px;
+      }
+    }
 
     /* ===== Image slide card ===== */
     .img-wrap{
@@ -612,7 +548,9 @@
     }
   </style>
 </head>
+
 <audio id="bgMusic" src="valentine.mp3" loop></audio>
+
 <body>
   <div class="bg-hearts" id="bgHearts"></div>
   <div class="burst" id="burst"></div>
@@ -632,22 +570,9 @@
   </main>
 
 <script>
-  /*
-    Put these files in repo root:
-    cat.gif
-    dang.jpeg
-    dangtinder.jpeg
-    nam.jpeg
-
-    Optional images for later slides (you can add later):
-    firstdate.jpg, kiss.jpg, rejected.jpg, hangout.jpg, sayyes.jpg, lovestart.jpg, dalat.jpg, phanthiet.jpg
-  */
-
   const slides = [
-    // 1 Cover
     { type:"cover", title:"Đăng & Nam Story 💕", subline:"", story:"", hint:"Tap Start 💗" },
 
-    // 2 LinkedIn (ONLY slide with footer dots + —Dang)
     {
       type:"linkedin",
       title:"Where our story begin 💗",
@@ -663,22 +588,18 @@
         message:"Hi Nam,\\n\\nMình là Đăng hiện đang làm bên RCR, rất vui được kết nối!"
       },
       hint:"Next → and that’s where everything started 💗"
-      },
+    },
 
-    // 3
     { type:"text",mode:"text", title:"But… 😔", subline:"", story:"Our conversation last 6 days only 😔", hint:"" },
-
-    // 4
     { type:"text",mode:"text", title:"Suddenly…", subline:"", story:"On 06 October 2025 😆", hint:"" },
 
-    // 5 Tinder match
     {
       type:"match",
       title:"We matched 💞",
       subline:"Short-term Relationship",
       match:{
         placeLine:"You matched on Tinder.",
-        rightImg:"dangtinder.jpeg",    // ✅ Dang (sender)
+        rightImg:"dangtinder.jpeg",
         leftImg:"nam.jpeg",
         buttonText:"SEND A MESSAGE",
         note:""
@@ -686,7 +607,6 @@
       hint:""
     },
 
-    // 6 Q&A
     {
       type:"qa",
       title:"Don't you remember our first dating 🎯",
@@ -695,40 +615,31 @@
       hint:"Think it carefully before Submit→"
     },
 
-    // 7
     { type:"opps",mode:"text", title:"Opps… 😭", subline:"", story:"Opps, it’s wrongggg… You don’t love me 😭", hint:"Next →" },
-
-    // 8
     { type:"text", mode:"text", title:"Just kidding! 😆", subline:"", story:"Whatever… I still love you 💗", hint:"Next →" },
 
-    // 9 First date long story
     {
-  type:"storyq",
-  title:"First date 💚",
-  subline:"13 Oct 2025",
-  storyq:{
-    title:"Our first date",
-    meta:"13/10/2025 • 6:30 PM • The Hallmark → D4 Sushi House → drove around",
-    body:
+      type:"storyq",
+      title:"First date 💚",
+      subline:"13 Oct 2025",
+      storyq:{
+        title:"Our first date",
+        meta:"13/10/2025 • 6:30 PM • The Hallmark → D4 Sushi House → drove around",
+        body:
 `I bought you a cup of matcha latte and picked you up around 6:30 PM at the Hallmark.
 Unfortunately, it started to rain ☔️, so we took a taxi to a Sushi House in District 4.
 
 After that, we went back to the Hallmark, grabbed the bike, and rode around the city for a while.
 
 It was simple… but it felt special.`,
-    question:"Do you know what I was thinking during our first date?"
-  },
-  hint:"Next →"
-},
+        question:"Do you know what I was thinking during our first date?"
+      },
+      hint:"Next →"
+    },
 
-
-    // 10 Thought
     { type:"text", mode:"text", title:"My thought 💭", subline:"", story:"Why does this person make me smile so easily? 😊", hint:"Next →" },
-
-    // 11 After first date
     { type:"text", mode:"text", title:"After the first date…", subline:"", story:"We talk more and more,and know more each other…and you start over thinking about me lol 😆", hint:"Next →" },
 
-    // 12 First kiss (image placeholder)
     {
       type:"image",
       title:"Our first kiss 💋",
@@ -737,7 +648,6 @@ It was simple… but it felt special.`,
       hint:"Next →"
     },
 
-    // 13 Rejected (image placeholder)
     {
       type:"image",
       title:"Nov 22…",
@@ -746,39 +656,33 @@ It was simple… but it felt special.`,
       hint:"Next →"
     },
 
-    // 14 Sad
     {
       type:"sad",
-       mode:"text",
+      mode:"text",
       title:"So sad… 😔",
       subline:"",
       story:"But I still love you. And I’m giving myself another chance to woo you  💗",
       hint:"Next →"
     },
 
-    // 15 Hangout photos placeholder
-{
-  type:"html",
-  title:"Dating & Hangout 💕",
-  story: `
-    <div style="text-align:center;font-size:22px;font-weight:600;margin-bottom:16px;">
-      We still dating and hangout 💕 <br>
-      You are more and more open for me
-    </div>
+    {
+      type:"html",
+      title:"Dating & Hangout 💕",
+      story: `
+        <div style="text-align:center;font-size:22px;font-weight:600;margin-bottom:16px;">
+          We still dating and hangout 💕 <br>
+          You are more and more open for me
+        </div>
 
-    <div class="collage">
-      <div class="collage-tile"><img src="hangout.png"></div>
-      <div class="collage-tile"><img src="hangout1.JPG"></div>
-      <div class="collage-tile"><img src="hangout5.JPG"></div>
-    </div>
-  `,
-  hint:"Next →"
-},
+        <div class="collage">
+          <div class="collage-tile"><img src="hangout.png"></div>
+          <div class="collage-tile"><img src="hangout1.JPG"></div>
+          <div class="collage-tile"><img src="hangout5.JPG"></div>
+        </div>
+      `,
+      hint:"Next →"
+    },
 
-
-
-
-    // 16 Say yes quote
     {
       type:"image",
       title:"Our love story started 💞",
@@ -789,10 +693,8 @@ It was simple… but it felt special.`,
         capText:"“Anh không hứa sẽ yêu em mãi mãi hay bao lâu, nhưng anh hứa sẽ yêu em trọn vẹn từng ngày em ở bên anh”"
       },
       hint:"Next →"
-
     },
 
-    // 18 Trip 1
     {
       type:"image",
       title:"Our first trip 🌲",
@@ -801,7 +703,6 @@ It was simple… but it felt special.`,
       hint:"Next →"
     },
 
-    // 19 Trip 2
     {
       type:"image",
       title:"Second trip 🌊",
@@ -809,53 +710,47 @@ It was simple… but it felt special.`,
       image:{ src:"phanthiet.jpg", capTitle:"Phan Thiet", capText:"Second trip — Phan Thiet 🌊" },
       hint:"Next →"
     },
-     // 20 Travel
-{
-  type:"html",
-  mode:"text",
-  title:"",   // leave empty because title goes inside story
-  story: `
-    <div style="
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:26px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    ">
-      
-      <!-- LEFT GIF -->
-      <img src="travel2.gif" style="
-        width:150px;
-        border-radius:20px;
-        box-shadow:0 12px 26px rgba(0,0,0,.15);
-      ">
 
-      <!-- TITLE -->
-      <div style="
-        font-size:28px;
-        font-weight:800;
-        text-align:center;
-        line-height:1.3;
-        max-width:420px;
-      ">
-        Together we will explore the world ✈️🌎 <br>
-        nha cục zàngggg 💕
-      </div>
+    {
+      type:"html",
+      mode:"text",
+      title:"",
+      story: `
+        <div style="
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          gap:26px;
+          flex-wrap:wrap;
+          margin-top:10px;
+        ">
+          <img src="travel2.gif" style="
+            width:150px;
+            border-radius:20px;
+            box-shadow:0 12px 26px rgba(0,0,0,.15);
+          ">
 
-      <!-- RIGHT GIF -->
-      <img src="travel1.gif" style="
-        width:150px;
-        border-radius:20px;
-        box-shadow:0 12px 26px rgba(0,0,0,.15);
-      ">
+          <div style="
+            font-size:28px;
+            font-weight:800;
+            text-align:center;
+            line-height:1.3;
+            max-width:420px;
+          ">
+            Together we will explore the world ✈️🌎 <br>
+            nha cục zàngggg 💕
+          </div>
 
-    </div>
-  `,
-  hint:"Next →"
-},
+          <img src="travel1.gif" style="
+            width:150px;
+            border-radius:20px;
+            box-shadow:0 12px 26px rgba(0,0,0,.15);
+          ">
+        </div>
+      `,
+      hint:"Next →"
+    },
 
-    // 21 Message
     {
       type:"text",
       mode:"text",
@@ -865,7 +760,6 @@ It was simple… but it felt special.`,
       hint:"Next →"
     },
 
-    // 22 Final
     {
       type:"final",
       title:"Will you be my Valentine? 💞",
@@ -889,7 +783,6 @@ It was simple… but it felt special.`,
   let step = 0;
   let yesScale = 1;
 
-  // Floating hearts background
   const heartChars = ["💗","💖","💘","💕","💞","❤️"];
   function spawnBgHeart(){
     const el = document.createElement("div");
@@ -935,37 +828,11 @@ It was simple… but it felt special.`,
   function renderSlide(slide){
     storyEl.innerHTML = "";
     storyEl.style.whiteSpace = "normal";
-if (slide.type === "gallery"){
-  const imgs = slide.images;
-  if (!slide._index) slide._index = 0;
 
-  storyEl.innerHTML = `
-    <div class="gallery-wrap">
-      <img class="gallery-img" src="${imgs[slide._index]}" onerror="this.style.opacity=.3">
-      <div class="gallery-nav">
-        <button id="gPrev">◀</button>
-        <button id="gNext">▶</button>
-      </div>
-    </div>
-  `;
-
-  setTimeout(()=>{
-    document.getElementById("gPrev").onclick = ()=>{
-      slide._index = (slide._index - 1 + imgs.length) % imgs.length;
-      render();
-    };
-    document.getElementById("gNext").onclick = ()=>{
-      slide._index = (slide._index + 1) % imgs.length;
-      render();
-    };
-  },0);
-
-  return;
-}
-if (slide.type === "html"){
-  storyEl.innerHTML = slide.story || "";
-  return;
-}
+    if (slide.type === "html"){
+      storyEl.innerHTML = slide.story || "";
+      return;
+    }
 
     if (slide.type === "linkedin"){
       const L = slide.linkedIn;
@@ -1015,11 +882,11 @@ if (slide.type === "html"){
           <div class="qa-grid">
             <div class="qa-field">
               <label>Date</label>
-              <input id="qaDate" placeholder="e.g.,01/01/2026" />
+              <input id="qaDate" placeholder="(type here...)" />
             </div>
             <div class="qa-field">
               <label>Place</label>
-              <input id="qaPlace" placeholder="e.g., Lavita Charm" />
+              <input id="qaPlace" placeholder="(type here...)" />
             </div>
             <div class="qa-field qa-full">
               <label>First Impression</label>
@@ -1032,143 +899,145 @@ if (slide.type === "html"){
       `;
       return;
     }
-if (slide.type === "storyq"){
-  const SQ = slide.storyq;
-  storyEl.innerHTML = `
-    <div class="storyq-wrap">
-      <div class="storyq-tag">💚 First date story</div>
 
-      <div class="storyq-title">${SQ.title}</div>
-      <div class="storyq-meta">${SQ.meta}</div>
+    if (slide.type === "storyq"){
+      const SQ = slide.storyq;
+      storyEl.innerHTML = `
+        <div class="storyq-wrap">
+          <div class="storyq-tag">💚 First date story</div>
 
-      <div class="storyq-box">${SQ.body.replaceAll("\\n","<br>")}</div>
+          <div class="storyq-title">${SQ.title}</div>
+          <div class="storyq-meta">${SQ.meta}</div>
 
-      <div class="storyq-question">
-        <div class="q">❓ ${SQ.question}</div>
-        <div class="hintpill">Tap Next →</div>
-      </div>
-    </div>
-  `;
-  return;
-}
-if (slide.type === "collage"){
-  const imgs = slide.images || [];
-  storyEl.innerHTML = `
-    <div class="collage">
-      <div class="collage-tile"><img src="${imgs[0] || ""}" onerror="this.style.opacity=.25"></div>
-      <div class="collage-tile"><img src="${imgs[1] || ""}" onerror="this.style.opacity=.25"></div>
-      <div class="collage-tile"><img src="${imgs[2] || ""}" onerror="this.style.opacity=.25"></div>
-    </div>
-  `;
-  return;
-}
-if (slide.type === "sad"){
-  storyEl.innerHTML = `
-    <div style="text-align:center">
-      <img src="rejected.GIF"
-           style="max-width:220px; width:70%; margin-bottom:12px;
-                  border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.18);">
-      <div style="font-size:22px; line-height:1.6; white-space:pre-line;">
-        ${slide.story}
-      </div>
-    </div>
-  `;
-  return;
-}
-if (slide.type === "opps"){
-  storyEl.innerHTML = `
-    <div style="text-align:center">
-      <img src="opps.GIF"
-           style="max-width:220px; width:70%; margin-bottom:12px;
-                  border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.18);">
-      <div style="font-size:22px; line-height:1.6; white-space:pre-line;">
-        ${slide.story}
-      </div>
-    </div>
-  `;
-  return;
+          <div class="storyq-box">${SQ.body.replaceAll("\\n","<br>")}</div>
 
-  }
-// ===== FINAL SLIDE (PLEASE + YES/NO + END) =====
-if (slide.type === "final"){
-  actionsEl.innerHTML = "";
-
-  // SHOW PLEASE FIRST
-  storyEl.innerHTML = `
-    <div style="text-align:center">
-      <img src="please.gif"
-           style="max-width:220px; width:70%; margin-bottom:12px;
-                  border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.18);">
-      <div style="font-size:22px; line-height:1.6;">
-        ${slide.story || ""}
-      </div>
-    </div>
-  `;
-
-  const yes = document.createElement("button");
-  yes.className = "yes";
-  yes.textContent = "Yes 💚";
-
-  const no = document.createElement("button");
-  no.className = "no";
-  no.textContent = "No 😢";
-
-  actionsEl.appendChild(back);
-  actionsEl.appendChild(yes);
-  actionsEl.appendChild(no);
-
-  function moveNo(){
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const rect = no.getBoundingClientRect();
-    const pad = 12;
-
-    const x = pad + Math.random()*(vw - rect.width - pad*2);
-    const y = pad + Math.random()*(vh - rect.height - pad*2);
-
-    no.style.position = "fixed";
-    no.style.left = x + "px";
-    no.style.top  = y + "px";
-    no.style.zIndex = 9999;
-
-    yesScale = Math.min(1.8, yesScale + 0.09);
-    yes.style.transform = `scale(${yesScale})`;
-    yes.style.boxShadow = "0 18px 40px rgba(46, 204, 113, .35)";
-  }
-
-  no.addEventListener("mouseenter", moveNo);
-  no.addEventListener("touchstart",(e)=>{ e.preventDefault(); moveNo(); },{passive:false});
-  no.addEventListener("click",(e)=>{ e.preventDefault(); moveNo(); });
-
-  yes.addEventListener("click",(e)=>{
-    const x = e.clientX || window.innerWidth/2;
-    const y = e.clientY || window.innerHeight/2;
-    popBurst(x,y);
-
-    titleEl.textContent = "I knew you’d say yes — I love you 💕";
-    sublineEl.textContent = "";
-
-    storyEl.innerHTML = `
-      <div style="text-align:center">
-        <img src="end.GIF"
-             style="max-width:360px; width:90%; border-radius:22px;
-                    box-shadow:0 18px 40px rgba(0,0,0,.25); margin-bottom:14px;">
-        <div style="font-size:22px; line-height:1.5;">
-          Happy Valentine’s Day, cục zàngggg ❤️<br>
-          Let’s make more memories together 💗
+          <div class="storyq-question">
+            <div class="q">❓ ${SQ.question}</div>
+            <div class="hintpill">Tap Next →</div>
+          </div>
         </div>
-      </div>
-    `;
+      `;
+      return;
+    }
 
-    hintEl.textContent = "";
-    actionsEl.innerHTML = "";
-    dotsEl.innerHTML = "";
+    if (slide.type === "sad"){
+      storyEl.innerHTML = `
+        <div style="text-align:center">
+          <img src="rejected.GIF"
+               style="max-width:220px; width:70%; margin-bottom:12px;
+                      border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.18);">
+          <div style="font-size:22px; line-height:1.6; white-space:pre-line;">
+            ${slide.story}
+          </div>
+        </div>
+      `;
+      return;
+    }
 
-    for(let i=0;i<30;i++) setTimeout(spawnBgHeart, i*40);
-  });
+    if (slide.type === "opps"){
+      storyEl.innerHTML = `
+        <div style="text-align:center">
+          <img src="opps.GIF"
+               style="max-width:220px; width:70%; margin-bottom:12px;
+                      border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.18);">
+          <div style="font-size:22px; line-height:1.6; white-space:pre-line;">
+            ${slide.story}
+          </div>
+        </div>
+      `;
+      return;
+    }
 
-  return;
-}
+    // ===== FINAL SLIDE (FIXED: buttons will not be wiped + local back button) =====
+    if (slide.type === "final"){
+      actionsEl.innerHTML = "";
+
+      // PLEASE content
+      storyEl.innerHTML = `
+        <div style="text-align:center">
+          <img src="please.gif"
+               style="max-width:220px; width:70%; margin-bottom:12px;
+                      border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.18);">
+          <div style="font-size:22px; line-height:1.6;">
+            ${slide.story || "Happy Valentine’s Day, Nam 💗 Will you be my Valentine? 💗"}
+          </div>
+        </div>
+      `;
+
+      // ✅ Local back button (so it never depends on render())
+      const backBtn = document.createElement("button");
+      backBtn.className = "back";
+      backBtn.textContent = "Back";
+      backBtn.onclick = ()=>{
+        step = Math.max(0, step-1);
+        popBurst(window.innerWidth/2, window.innerHeight/2);
+        render();
+      };
+
+      const yes = document.createElement("button");
+      yes.className = "yes";
+      yes.textContent = "Yes 💚";
+
+      const no = document.createElement("button");
+      no.className = "no";
+      no.textContent = "No 😢";
+
+      actionsEl.appendChild(backBtn);
+      actionsEl.appendChild(yes);
+      actionsEl.appendChild(no);
+
+      function moveNo(){
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const rect = no.getBoundingClientRect();
+        const pad = 12;
+
+        const x = pad + Math.random()*(vw - rect.width - pad*2);
+        const y = pad + Math.random()*(vh - rect.height - pad*2);
+
+        no.style.position = "fixed";
+        no.style.left = x + "px";
+        no.style.top  = y + "px";
+        no.style.zIndex = 9999;
+
+        yesScale = Math.min(1.8, yesScale + 0.09);
+        yes.style.transform = `scale(${yesScale})`;
+        yes.style.boxShadow = "0 18px 40px rgba(46, 204, 113, .35)";
+      }
+
+      no.addEventListener("mouseenter", moveNo);
+      no.addEventListener("touchstart",(e)=>{ e.preventDefault(); moveNo(); },{passive:false});
+      no.addEventListener("click",(e)=>{ e.preventDefault(); moveNo(); });
+
+      yes.addEventListener("click",(e)=>{
+        const x = e.clientX || window.innerWidth/2;
+        const y = e.clientY || window.innerHeight/2;
+        popBurst(x,y);
+
+        titleEl.textContent = "I knew you’d say yes — I love you 💕";
+        sublineEl.textContent = "";
+
+        storyEl.innerHTML = `
+          <div style="text-align:center">
+            <img src="end.GIF"
+                 style="max-width:360px; width:90%; border-radius:22px;
+                        box-shadow:0 18px 40px rgba(0,0,0,.25); margin-bottom:14px;">
+            <div style="font-size:22px; line-height:1.5;">
+              Happy Valentine’s Day, cục zàngggg ❤️<br>
+              Let’s make more memories together 💗
+            </div>
+          </div>
+        `;
+
+        hintEl.textContent = "";
+        actionsEl.innerHTML = "";
+        dotsEl.innerHTML = "";
+
+        for(let i=0;i<30;i++) setTimeout(spawnBgHeart, i*40);
+      });
+
+      return;
+    }
 
     if (slide.type === "image"){
       const I = slide.image;
@@ -1195,32 +1064,34 @@ if (slide.type === "final"){
     sublineEl.textContent = s.subline || "";
     hintEl.textContent = s.hint || "";
 
-   // Reset modes every time
-panelEl.classList.remove("cover-mode", "text-mode");
+    // Reset modes every time
+    panelEl.classList.remove("cover-mode", "text-mode");
 
-// Cover mode + cat only on slide 1
-if (s.type === "cover") {
-  panelEl.classList.add("cover-mode");
-  coverCatEl.style.display = "block";
-} else {
-  coverCatEl.style.display = "none";
-}
+    // Cover mode + cat only on slide 1
+    if (s.type === "cover") {
+      panelEl.classList.add("cover-mode");
+      coverCatEl.style.display = "block";
+    } else {
+      coverCatEl.style.display = "none";
+    }
 
-// Text mode (vertical center) for slides with mode:"text"
-if (s.mode === "text") {
-  panelEl.classList.add("text-mode");
-}
+    // Text mode (vertical center) for slides with mode:"text"
+    if (s.mode === "text") {
+      panelEl.classList.add("text-mode");
+    }
 
-    // ✅ Footer ONLY when showFooter true (Slide 2 only)
+    // Footer ONLY when showFooter true
     if (s.showFooter === true) panelEl.classList.add("show-footer");
     else panelEl.classList.remove("show-footer");
 
     renderDots();
     renderSlide(s);
 
+    // ✅ FIX: If FINAL slide, STOP here so we don't wipe its buttons
+    if (s.type === "final") return;
+
     actionsEl.innerHTML = "";
 
-    // Cover: Start
     if (s.type === "cover") {
       const start = document.createElement("button");
       start.className = "next";
@@ -1234,7 +1105,6 @@ if (s.mode === "text") {
       return;
     }
 
-    // Back
     const back = document.createElement("button");
     back.className = "back";
     back.textContent = "Back";
@@ -1246,7 +1116,6 @@ if (s.mode === "text") {
       render();
     };
 
-    // QA: Submit
     if (s.type === "qa"){
       const submit = document.createElement("button");
       submit.className = "next";
@@ -1261,7 +1130,6 @@ if (s.mode === "text") {
       return;
     }
 
-    // Normal Next
     const next = document.createElement("button");
     next.className = "next";
     next.textContent = "Next";
@@ -1276,19 +1144,16 @@ if (s.mode === "text") {
   }
 
   render();
-// ===== Background Music =====
-const music = document.getElementById("bgMusic");
 
-function playMusic(){
-  if (!music) return;
-  music.volume = 0.5;
-  music.play().catch(()=>{});
-}
-
-// Start music on first user interaction
-document.addEventListener("click", playMusic, { once:true });
-document.addEventListener("touchstart", playMusic, { once:true });
-
+  // ===== Background Music =====
+  const music = document.getElementById("bgMusic");
+  function playMusic(){
+    if (!music) return;
+    music.volume = 0.5;
+    music.play().catch(()=>{});
+  }
+  document.addEventListener("click", playMusic, { once:true });
+  document.addEventListener("touchstart", playMusic, { once:true });
 </script>
 </body>
 </html>
